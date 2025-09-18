@@ -7,7 +7,7 @@ from datetime import datetime
 ENABLE_CSV_EXPORT = False  # auf True setzen, um CSV-Download zu zeigen
 
 st.set_page_config(page_title="PIKE-P Selbstlerntest", layout="wide")
-st.title("PIKE-P Selbstlerntest (Inforamtaionskompetenzen für Psycholog:innen)")
+st.title("PIKE-P Selbstlerntest (Informationskompetenzen für Psycholog:innen)")
 st.caption("Inoffizielle Selbstlern-Version – bitte Originalquelle (CC BY-SA 4.0) zitieren: "
            "Rosman, Mayer & Krampen (2019), Open Test Archive (ZPID).")
 
