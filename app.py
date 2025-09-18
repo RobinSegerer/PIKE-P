@@ -52,6 +52,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+SCALE_HINT = "1 = völlig ungeeignet · 2 = eher ungeeignet · 3 = teils/teils · 4 = eher geeignet · 5 = sehr gut geeignet"
+
 # ===== Items =====
 
 items = [
@@ -354,6 +356,41 @@ def score_item(item_id: str, r: dict[str, int]) -> int:
     elif item_id=="pp22_s2_f4":
         s += (A>B) + (A>D) + (C>B)
     return int(s)
+
+for item_id, title, choices in items:
+    with st.expander(title, expanded=(layout_mode == "Untereinander")):
+        if layout_mode == "Kompakt (2 Spalten)":
+            cols = st.columns(2)
+            for i in range(2):
+                with cols[i]:
+                    for j in range(2):
+                        idx = i*2 + j
+                        label = chr(65+idx)  # A-D
+                        st.markdown(f"**{choices[idx]}**")
+                        responses.setdefault(item_id, {})[label] = st.radio(
+                            f"{item_id}_{label}",
+                            options=[1, 2, 3, 4, 5],
+                            index=None,
+                            horizontal=True,
+                            label_visibility="collapsed",
+                            key=f"{item_id}_{label}"
+                        )
+                        st.caption(SCALE_HINT)  # ⬅️ Skala klein anzeigen
+                        st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
+        else:
+            for idx in range(4):
+                label = chr(65+idx)
+                st.markdown(f"**{choices[idx]}**")
+                responses.setdefault(item_id, {})[label] = st.radio(
+                    f"{item_id}_{label}",
+                    options=[1, 2, 3, 4, 5],
+                    index=None,
+                    horizontal=True,
+                    label_visibility="collapsed",
+                    key=f"{item_id}_{label}"
+                )
+                st.caption(SCALE_HINT)  # ⬅️ Skala klein anzeigen
+                st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
 
 # ===== Auswertung =====
 if st.button("Auswerten", type="primary"):
