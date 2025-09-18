@@ -53,185 +53,216 @@ st.markdown(
 )
 
 # ===== Items =====
+
 items = [
     ("pp01_s1_f1",
      "1) In einem Vertiefungsseminar sollen Sie eine 10-seitige Hausarbeit zum Thema „Die Entwicklung des Selbstwertgefühls im Jugendalter“ schreiben. Wie beginnen Sie Ihre Vorbereitung?",
      (
-         "A) Ich lese ein Einführungslehrbuch über die Entwicklung im Jugendalter, weil man diese spezifische Fragestellung nur beantworten kann, wenn man genug über die allgemeine Entwicklung weiß.",
-         "B) Ich kläre zuerst einmal ganz genau, was man unter „Selbstwertgefühl“ versteht, und beschaffe mir dazu mehrere einführende Buchkapitel zum Thema.",
-         "C) Ich überlege, was ich bereits zum Thema weiß und was in anderen Lehrveranstaltungen dazu behandelt wurde.",
-         "D) Ich schreibe mir auf, welche Synonyme bzw. welche verwandten Begriffe es zu den zentralen Konzepten des Themas gibt (z. B. zu Selbstwertgefühl „Selbstwert“, „Selbstsicherheit“; zu Jugendalter „Adoleszenz“) und wie diese im Englischen lauten."
+        "A) Ich lese zunächst ein Einführungslehrbuch über die Entwicklung im Jugendalter, weil man diese spezifische Fragestellung nur beantworten kann, wenn man genug über die allgemeine Entwicklung weiß.",
+        "B) Ich kläre zuerst ganz genau, was man unter „Selbstwertgefühl“ versteht, und beschaffe mir dazu mehrere einführende Buchkapitel zum Thema.",
+        "C) Ich überlege, was ich bereits zum Thema weiß und was in anderen Lehrveranstaltungen dazu behandelt wurde, um darauf aufzubauen.",
+        "D) Ich schreibe mir Synonyme bzw. verwandte Begriffe zu den zentralen Konzepten des Themas (z. B. zu „Selbstwertgefühl“ auch „Selbstwert“, „Selbstsicherheit“; zu „Jugendalter“ auch „Adoleszenz“) auf und recherchiere auch die entsprechenden englischen Begriffe."
      )
     ),
     ("pp02_s1_f1",
-     "2) Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche. Bitte geben Sie für jede der folgenden vier Abfolgen der fünf Schritte an, für wie geeignet Sie sie halten.",
+     "2) Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche:\n"
+     "1. Ermitteln von (zusätzlichen) Suchbegriffen …\n"
+     "2. Lesen der Aufgabenstellung …\n"
+     "3. Verknüpfen der Suchbegriffe und Eingabe der Suchphrase in die Suchmaske …\n"
+     "4. Kurze, einfache Suchen …\n"
+     "5. Identifikation wichtiger Konzepte …\n\n"
+     "Bitte geben Sie für jede der folgenden vier Abfolgen der fünf Schritte an, für wie geeignet Sie sie halten.",
      (
-         "A) 2–5–4–1–3: Lesen der Aufgabenstellung – Identifikation wichtiger Konzepte – Kurze, einfache Suchen – Ermitteln (zusätzlicher) Suchbegriffe – Verknüpfen/Eingabe der Suchphrase",
-         "B) 2–5–1–4–3: Lesen der Aufgabenstellung – Identifikation wichtiger Konzepte – Ermitteln (zusätzlicher) Suchbegriffe – Kurze, einfache Suchen – Verknüpfen/Eingabe der Suchphrase",
-         "C) 2–1–4–5–3: Lesen der Aufgabenstellung – Ermitteln (zusätzlicher) Suchbegriffe – Kurze, einfache Suchen – Identifikation wichtiger Konzepte – Verknüpfen/Eingabe der Suchphrase",
-         "D) 2–1–5–4–3: Lesen der Aufgabenstellung – Ermitteln (zusätzlicher) Suchbegriffe – Identifikation wichtiger Konzepte – Kurze, einfache Suchen – Verknüpfen/Eingabe der Suchphrase"
+        "A) Ich gehe vor nach der Reihenfolge: 2 – 5 – 4 – 1 – 3.",
+        "B) Ich gehe vor nach der Reihenfolge: 2 – 5 – 1 – 4 – 3.",
+        "C) Ich gehe vor nach der Reihenfolge: 2 – 1 – 4 – 5 – 3.",
+        "D) Ich gehe vor nach der Reihenfolge: 2 – 1 – 5 – 4 – 3."
      )
     ),
     ("pp03_s1_f2",
-     "3) Sie möchten ein Referat über die Intelligenzmessung bei schizophrenen Patienten vorbereiten. Der folgende, ältere Artikel liegt Ihnen vor:\n\nLidz, T., Gay, J. R., & Tietze, C. (1942). Intelligence in cerebral deficit states and schizophrenia measured by Kohs Block Test. Archives of Neurology and Psychiatry, 48(4), 568–582.\n\nWie gehen Sie vor, um weitere Artikel zu finden?",
+     "3) Sie möchten ein Referat über die Intelligenzmessung bei schizophrenen Patientinnen und Patienten vorbereiten. Der folgende, ältere Artikel liegt Ihnen vor:\n\n"
+     "Lidz, T., Gay, J. R., & Tietze, C. (1942). Intelligence in cerebral deficit states and schizophrenia measured by Kohs Block Test. Archives of Neurology and Psychiatry, 48(4), 568–582.\n\n"
+     "Wie gehen Sie vor, um weitere Artikel zu finden?",
      (
-         "A) Schlagwörter des Artikels extrahieren und als Ausgangspunkt für weitere Suchen (z. B. Fachdatenbank) nutzen.",
-         "B) Nach weiteren Artikeln derselben Autor:innen suchen.",
-         "C) In einer Fachdatenbank/Google Scholar nach Artikeln suchen, die den Artikel zitiert haben.",
-         "D) Im Literaturverzeichnis des Artikels recherchieren."
+        "A) Ich extrahiere die Schlagwörter des Artikels und nutze diese als Ausgangspunkt für weitere Suchen, zum Beispiel in einer Fachdatenbank.",
+        "B) Ich suche gezielt nach weiteren Artikeln dieser Autorinnen und Autoren, da viele Forschende mehrere Beiträge zum gleichen Thema publizieren.",
+        "C) Ich recherchiere in einer Fachdatenbank oder bei Google Scholar nach Artikeln, die diesen Artikel zitiert haben (Zitationssuche).",
+        "D) Ich suche im Literaturverzeichnis des Artikels nach weiteren relevanten Quellen."
      )
     ),
     ("pp04_s1_f2",
-     "4) Sie möchten eine Hausarbeit über den Erwerb von Ängsten schreiben. Der folgende, soeben erschienene Artikel liegt Ihnen vor:\n\nWegerer, M., Blechert, J., & Wilhelm, F. H. (2013). Emotionales Lernen: Ein naturalistisches experimentelles Paradigma zur Untersuchung von Angsterwerb und Extinktion mittels aversiver Filme. Zeitschrift für Psychiatrie, Psychologie und Psychotherapie, 61(2), 93–103.\n\nWie gehen Sie vor, um nach weiterer Literatur zu suchen?",
+     "4) Sie möchten eine Hausarbeit über den Erwerb von Ängsten schreiben. Der folgende, soeben erschienene Artikel liegt Ihnen vor:\n\n"
+     "Wegerer, M., Blechert, J., & Wilhelm, F. H. (2013). Emotionales Lernen: Ein naturalistisches experimentelles Paradigma zur Untersuchung von Angsterwerb und Extinktion mittels aversiver Filme. Zeitschrift für Psychiatrie, Psychologie und Psychotherapie, 61(2), 93–103.\n\n"
+     "Wie gehen Sie vor, um nach weiterer Literatur zu suchen?",
      (
-         "A) Schlagwörter extrahieren und als Ausgangspunkt für weitere Suchen nutzen.",
-         "B) Nach weiteren Artikeln derselben Autor:innen suchen.",
-         "C) Zitationssuche (Fachdatenbank/Google Scholar).",
-         "D) Literaturverzeichnis des Artikels durchsuchen."
+        "A) Ich extrahiere die Schlagwörter des Artikels und nutze diese als Ausgangspunkt für weitere Suchen in Fachdatenbanken.",
+        "B) Ich suche nach weiteren Artikeln derselben Autorinnen und Autoren, da diese häufig mehrfach zum Thema publizieren.",
+        "C) Ich nutze eine Zitationssuche in einer Fachdatenbank oder bei Google Scholar, um Arbeiten zu finden, die diesen Artikel zitiert haben.",
+        "D) Ich werte das Literaturverzeichnis des Artikels systematisch aus."
      )
     ),
     ("pp05_s1_f3",
-     "5) Sie bereiten eine Hausarbeit vor. Der Arbeitstitel lautet: „Der Einfluss von Lebenszufriedenheit und Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden“. Wie geeignet sind folgende Suchanfragen?",
+     "5) Sie bereiten eine Hausarbeit vor. Der Arbeitstitel lautet: „Der Einfluss von Lebenszufriedenheit und Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden“. Wie geeignet sind folgende Suchanfragen, um nach relevanter Fachliteratur zu suchen?",
      (
-         "A) Einfluss Lebenszufriedenheit Selbstwirksamkeitserwartungen „psychosomatische Beschwerden“",
-         "B) Lebenszufriedenheit Selbstwirksamkeitserwartungen „psychosomatische Beschwerden“",
-         "C) Einfluss Lebenszufriedenheit Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden",
-         "D) Der Einfluss von Lebenszufriedenheit und Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden"
+        "A) Ich formuliere die Suche so: Einfluss Lebenszufriedenheit Selbstwirksamkeitserwartungen „psychosomatische Beschwerden“.",
+        "B) Ich formuliere die Suche so: Lebenszufriedenheit Selbstwirksamkeitserwartungen „psychosomatische Beschwerden“.",
+        "C) Ich formuliere die Suche als vollständigen Satz: Einfluss Lebenszufriedenheit Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden.",
+        "D) Ich formuliere die Suche noch ausführlicher als Titel: Der Einfluss von Lebenszufriedenheit und Selbstwirksamkeitserwartungen auf psychosomatische Beschwerden."
      )
     ),
     ("pp06_s1_f3",
-     "6) Kurzreferat: „Wirksamkeit der Therapietechnik ‚Flooding‘ bei Spinnenphobie“. Wie gut eignen sich folgende Suchbegriffe?",
-     ("A) Wirksamkeit", "B) Spinnenphobie", "C) Therapietechnik", "D) Flooding")
+     "6) Sie bereiten ein Kurzreferat mit dem Arbeitstitel „Wirksamkeit der Therapietechnik ‚Flooding‘ bei Spinnenphobie“ vor. Wie gut eignen sich die folgenden Suchbegriffe?",
+     (
+        "A) Ich verwende nur den allgemeinen Suchbegriff „Wirksamkeit“.",
+        "B) Ich verwende den spezifischen Suchbegriff „Spinnenphobie“ (bzw. „arachnophobia“).",
+        "C) Ich verwende den allgemeinen Suchbegriff „Therapietechnik“.",
+        "D) Ich verwende den spezifischen Suchbegriff „Flooding“."
+     )
     ),
     ("pp07_s1_f4",
-     "7) Hausarbeit: „Willenstendenzen im Rubikonmodell der Handlungsphasen“. Google Scholar liefert nur 1 Treffer. Wie beurteilen Sie folgende Änderungen (Begriffe mit UND verknüpft)?",
+     "7) Im Rahmen eines Seminars zur Motivationspsychologie bereiten Sie eine Hausarbeit vor. Der Arbeitstitel lautet: „Willenstendenzen im Rubikonmodell der Handlungsphasen“. Eine Suche mit den Suchbegriffen „Willenstendenzen“ und „Rubikonmodell der Handlungsphasen“ hat nur einen Treffer ergeben. Wie beurteilen Sie die folgenden Änderungen der Suchanfrage? (Die Suchbegriffe werden jeweils mit UND verknüpft.)",
      (
-         "A) „Motivation“ „Wunsch“ „Volition“ „Wille“ „Rubikonmodell“",
-         "B) „Rubikonmodell“ „Volition“",
-         "C) „Rubikonmodell“ „Wille“",
-         "D) „Handlungsphasen“ „Modell“ „Wille“"
+        "A) Ich suche mit den Begriffen „Motivation“, „Wunsch“, „Volition“, „Wille“ und „Rubikonmodell“.",
+        "B) Ich suche mit den Begriffen „Rubikonmodell“ und „Volition“.",
+        "C) Ich suche mit den Begriffen „Rubikonmodell“ und „Wille“.",
+        "D) Ich suche mit den Begriffen „Handlungsphasen“, „Modell“ und „Wille“."
      )
     ),
     ("pp08_s1_f4",
-     "8) Referat: „Wirksamkeit von Belohnung und Bestrafung bei Kleinkindern“. Suche mit „Wirksamkeit“, „Belohnung“, „Bestrafung“, „Kleinkinder“ ergibt viele irrelevante Ergebnisse. Wie beurteilen Sie folgende Änderungen (UND-Verknüpfung)?",
+     "8) Im Rahmen eines Seminars zur Lernpsychologie bereiten Sie ein Referat vor. Der Arbeitstitel lautet: „Befunde zur Wirksamkeit von Belohnung und Bestrafung bei Kleinkindern“. Eine Suche mit den Suchbegriffen „Wirksamkeit“, „Belohnung“, „Bestrafung“ und „Kleinkinder“ ergab viele irrelevante Ergebnisse. Wie beurteilen Sie die folgenden Möglichkeiten, Ihre Suche abzuändern? (Die Suchbegriffe werden jeweils mit UND verknüpft.)",
      (
-         "A) „operante Konditionierung“ Kleinkinder",
-         "B) „empirische Befunde“ Wirksamkeit Belohnung Bestrafung Kleinkinder",
-         "C) Konditionierung Kleinkinder Verstärkung",
-         "D) „klassische Konditionierung“ Kleinkinder"
+        "A) Ich suche mit den Begriffen „operante Konditionierung“ und „Kleinkinder“.",
+        "B) Ich suche mit den Begriffen „empirische Befunde“, „Wirksamkeit“, „Belohnung“, „Bestrafung“ und „Kleinkinder“.",
+        "C) Ich suche mit den Begriffen „Konditionierung“, „Kleinkinder“ und „Verstärkung“.",
+        "D) Ich suche mit den Begriffen „klassische Konditionierung“ und „Kleinkinder“."
      )
     ),
     ("pp09_s1_f5",
-     "9) Einstiegslektüre zur arbeitsbezogenen Stressforschung – wie geeignet sind folgende Literaturarten?",
+     "9) Sie planen eine Bachelorarbeit im Bereich der arbeitsbezogenen Stressforschung. Für wie geeignet halten Sie die folgenden Literaturarten, um sich in das neue Themengebiet einzuarbeiten?",
      (
-         "A) Empirische Arbeiten zu unterschiedlichen Aspekten",
-         "B) Populärpsychologische Ratgeber",
-         "C) Review-Artikel",
-         "D) Metaanalysen"
+        "A) Ich nutze empirische Arbeiten zu unterschiedlichen Aspekten des berufsbezogenen Stresserlebens.",
+        "B) Ich nutze populärpsychologische Ratgeber zu arbeitsbezogenem Stress.",
+        "C) Ich nutze Überblicksarbeiten im Sinne von Review-Artikeln zur arbeitsbezogenen Stressforschung.",
+        "D) Ich nutze Metaanalysen zur arbeitsbezogenen Stressforschung."
      )
     ),
     ("pp10_s1_f5",
-     "10) Zusammenhang Zeitdruck ↔ Burnout begründen – wie geeignet sind folgende Literaturarten?",
+     "10) Nachdem Sie sich in das Themengebiet der arbeitsbezogenen Stressforschung eingearbeitet haben, postulieren Sie einen positiven Zusammenhang zwischen Zeitdruck und Burnout. Welche Literaturarten eignen sich, um dies möglichst überzeugend zu begründen?",
      (
-         "A) Review-Artikel",
-         "B) Einzelne empirische Arbeiten",
-         "C) Metaanalysen",
-         "D) Veröffentlichungen statistischer Dienste"
+        "A) Ich stütze mich auf Review-Artikel zum Zusammenhang zwischen Zeitdruck und Burnout.",
+        "B) Ich stütze mich auf einzelne empirische Arbeiten zum Zusammenhang zwischen Zeitdruck und Burnout.",
+        "C) Ich stütze mich auf Metaanalysen zum Zusammenhang zwischen Zeitdruck und Burnout.",
+        "D) Ich stütze mich auf Veröffentlichungen eines statistischen Dienstes (z. B. Statistisches Bundesamt)."
      )
     ),
     ("pp11_s1_f6",
-     "11) Bandura-Artikel „Human agency in social cognitive theory“ – wo erschien er? Wie geeignet sind folgende Hilfsmittel?",
-     ("A) PsycINFO", "B) PSYNDEX", "C) Bibliothekskatalog", "D) Google Scholar")
+     "11) Ihr Dozent hat Ihnen den Artikel „Human agency in social cognitive theory“ von Albert Bandura empfohlen. Wie geeignet sind die folgenden Hilfsmittel, um herauszufinden, in welcher Zeitschrift der Artikel erschienen ist?",
+     (
+        "A) Ich verwende die Fachdatenbank PsycINFO.",
+        "B) Ich verwende die Fachdatenbank PSYNDEX.",
+        "C) Ich recherchiere im Bibliothekskatalog.",
+        "D) Ich recherchiere mit Google Scholar."
+     )
     ),
     ("pp12_s1_f6",
-     "12) Lazarus-Artikel, Titel vergessen – wie geeignet sind folgende Hilfsmittel?",
-     ("A) DBIS-Autorensuche", "B) Google Scholar (Autorensuche)", "C) Bibliothekskatalog (Autorensuche)", "D) PsycINFO (Autorensuche)")
+     "12) Sie suchen einen Artikel von Richard S. Lazarus, kennen aber nicht mehr den genauen Titel. Wie geeignet sind die folgenden Hilfsmittel?",
+     (
+        "A) Ich nutze die Autorensuche im Datenbank-Infosystem (DBIS).",
+        "B) Ich nutze die Autorensuche in Google Scholar.",
+        "C) Ich nutze die Autorensuche im Bibliothekskatalog.",
+        "D) Ich nutze die Autorensuche in PsycINFO."
+     )
     ),
     ("pp13_s1_f6",
-     "13) Empirische Arbeiten zu „Learning Strategies“ (6–12 Jahre) – wie geeignet sind folgende Hilfsmittel?",
-     ("A) Bibliothekskatalog", "B) PsycINFO", "C) Google Scholar", "D) PSYNDEX")
+     "13) Sie benötigen mehrere empirische Arbeiten zu Lernstrategien („Learning Strategies“) von Schulkindern im Alter von 6 bis 12 Jahren. Wie geeignet sind die folgenden Hilfsmittel?",
+     (
+        "A) Ich suche im Bibliothekskatalog.",
+        "B) Ich recherchiere in der Fachdatenbank PsycINFO.",
+        "C) Ich recherchiere mit Google Scholar.",
+        "D) Ich recherchiere in der Fachdatenbank PSYNDEX."
+     )
     ),
     ("pp14_s2_f1",
-     "14) Studie: Vergleich „Drug Therapy“ vs. „Psychotherapy“ bei ADS-Kindern – wie gut eignen sich folgende Verknüpfungen?",
+     "14) Sie suchen eine Studie, die medikamentöse Therapie („Drug Therapy“) und Psychotherapie („Psychotherapy“) bei Kindern mit ADS vergleicht. Wie gut eignen sich die folgenden Verknüpfungen?",
      (
-         "A) \"Attention Deficit Disorder\" UND \"Drug Therapy\" ODER \"Psychotherapy\"",
-         "B) \"Attention Deficit Disorder\" UND \"Drug Therapy\" UND \"Psychotherapy\"",
-         "C) \"Drug Therapy\" ODER \"Psychotherapy\" BEI \"Attention Deficit Disorder\"",
-         "D) \"Attention Deficit Disorder\" UND \"Drug Therapy\" NICHT \"Psychotherapy\""
+        "A) Ich formuliere die Suche als: \"Attention Deficit Disorder\" UND \"Drug Therapy\" ODER \"Psychotherapy\".",
+        "B) Ich formuliere die Suche als: \"Attention Deficit Disorder\" UND \"Drug Therapy\" UND \"Psychotherapy\".",
+        "C) Ich formuliere die Suche als: \"Drug Therapy\" ODER \"Psychotherapy\" BEI \"Attention Deficit Disorder\".",
+        "D) Ich formuliere die Suche als: \"Attention Deficit Disorder\" UND \"Drug Therapy\" NICHT \"Psychotherapy\"."
      )
     ),
     ("pp15_s2_f1",
-     "15) Studie zur Diagnostik von Hochbegabung bei Kindern – wie gut eignen sich folgende Such-Formulierungen?",
+     "15) Sie suchen eine Studie zur Diagnostik von Hochbegabung bei Kindern. Wie gut eignen sich die folgenden Suchanfragen?",
      (
-         "A) „Diagnostik“ ODER „Hochbegabung“ ODER „Kinder“",
-         "B) „Diagnostik“ UND „Hochbegabung“ UND „Kinder“",
-         "C) „Diagnostik“ UND „Hochbegabung“ NICHT „Jugendliche“ NICHT „Erwachsene“",
-         "D) „Diagnostik“ UND „Hochbegabung“ ODER „Kinder“"
+        "A) Ich verknüpfe die Begriffe mit ODER: „Diagnostik“ ODER „Hochbegabung“ ODER „Kinder“.",
+        "B) Ich verknüpfe die Begriffe mit UND: „Diagnostik“ UND „Hochbegabung“ UND „Kinder“.",
+        "C) Ich schränke ein: „Diagnostik“ UND „Hochbegabung“ NICHT „Jugendliche“ NICHT „Erwachsene“.",
+        "D) Ich formuliere: „Diagnostik“ UND „Hochbegabung“ ODER „Kinder“."
      )
     ),
     ("pp16_s2_f2",
-     "16) Thema „Zeitdruck am Arbeitsplatz“ – uneinheitliche englische Begriffe. Wie geeignet sind folgende Vorgehensweisen?",
+     "16) In Ihrer Bachelorarbeit möchten Sie das Thema „Zeitdruck am Arbeitsplatz“ behandeln. Für „Zeitdruck“ existieren verschiedene englische Begriffe. Wie geeignet sind die folgenden Vorgehensweisen?",
      (
-         "A) Drei Suchen („Work Load“, „Time Pressure“, „Work Pressure“) und verknüpfen",
-         "B) Zuerst im Fachwörterbuch verbreitetsten Begriff ermitteln",
-         "C) Einfache Suche – Synonyme automatisch einbezogen",
-         "D) Thesaurus der Fachdatenbank prüfen (verknüpfte Schlagworte)"
+        "A) Ich führe drei separate Suchen nach „Work Load“, „Time Pressure“ und „Work Pressure“ aus und verknüpfe die Ergebnisse.",
+        "B) Ich kläre zunächst anhand eines Fachwörterbuchs, welcher der Begriffe am verbreitetsten ist und vermutlich als Schlagwort genutzt wird.",
+        "C) Ich führe eine einfache Suche mit einem der drei Begriffe durch und verlasse mich darauf, dass Synonyme automatisch einbezogen werden.",
+        "D) Ich prüfe im Thesaurus der Fachdatenbank, mit welchen Schlagworten die Begriffe verknüpft sind, und nutze diese gezielt."
      )
     ),
     ("pp17_s2_f2",
-     "17) Längsschnittstudien zur Wirksamkeit der kognitiven Verhaltenstherapie – Vorgehen, um wenig zu übersehen?",
+     "17) Sie suchen Längsschnittstudien („longitudinal study“) zur Wirksamkeit der kognitiven Verhaltenstherapie. Wie gehen Sie vor, um möglichst wenige Studien zu übersehen?",
      (
-         "A) Zwei Thesaurus-Suchen („cognitive behavior therapy“ UND „longitudinal studies“), dann UND",
-         "B) „cognitive behavior therapy longitudinal“ in die Suchmaske",
-         "C) Schlagwort „cognitive behavior therapy“ UND Feld „Methodology: Longitudinal Empirical Study“",
-         "D) Schlagwort „longitudinal study“ UND Feld „Classification Codes: Cognitive Therapy“"
+        "A) Ich starte zwei Thesaurus-Suchen nach „cognitive behavior therapy“ und „longitudinal studies“ und verknüpfe die Suchen anschließend mit UND.",
+        "B) Ich gebe die freie Suchphrase „cognitive behavior therapy longitudinal“ ein.",
+        "C) Ich suche nach dem Schlagwort „cognitive behavior therapy“ und kombiniere es mit dem Datenbankfeld „Methodology“ = „Longitudinal Empirical Study“ (UND-Verknüpfung).",
+        "D) Ich suche nach dem Schlagwort „longitudinal study“ und kombiniere es mit dem Feld „Classification Codes“ = „Cognitive Therapy“ (UND-Verknüpfung)."
      )
     ),
     ("pp18_s2_f3",
-     "18) Heckhausen-Artikel (1964) – Titel entfallen. Wie am schnellsten finden?",
+     "18) Sie suchen in einer Fachdatenbank einen bestimmten Artikel von Heinz Heckhausen aus dem Jahr 1964, kennen aber den Titel nicht. Wie gehen Sie vor?",
      (
-         "A) „Heckhausen“ UND „1964“ in die Suchmaske",
-         "B) Autorensuche „Heckhausen“, Ergebnisse nach Jahr sortieren",
-         "C) Autorensuche „Heckhausen“ + Filter Erscheinungsjahr 1964",
-         "D) Thesaurus „Erscheinungsjahr“ = 1964 UND Autor „Heckhausen“"
+        "A) Ich gebe „Heckhausen“ UND „1964“ direkt in die allgemeine Suchmaske ein.",
+        "B) Ich führe eine Autorensuche nach „Heckhausen“ durch, sortiere die Ergebnisse nach Jahr und suche manuell den Jahrgang 1964.",
+        "C) Ich nutze die Autorensuche nach „Heckhausen“ und schränke die Ergebnisse auf das Erscheinungsjahr 1964 ein.",
+        "D) Ich verwende einen Thesaurus-Eintrag für „Erscheinungsjahr“ = 1964 und verknüpfe ihn mit der Autorensuche „Heckhausen“ über UND."
      )
     ),
     ("pp19_s2_f3",
-     "19) Dissertationen mit FPI-R finden – Vorgehen?",
+     "19) Sie möchten herausfinden, ob es Dissertationen gibt, in denen das Freiburger Persönlichkeits-Inventar in der revidierten Fassung (FPI-R) angewandt wurde. Wie gehen Sie vor?",
      (
-         "A) „Freiburger Persoenlichkeits-Inventar“ UND „revidierte Fassung“ + Publikationstyp „Dissertation“",
-         "B) Thesaurus-Suche „Dissertation“ UND FPI-R",
-         "C) „Freiburger Persoenlichkeits-Inventar“ UND „Dissertation“",
-         "D) „FPI-R“ + Publikationstyp „Dissertation“"
+        "A) Ich suche nach „Freiburger Persönlichkeits-Inventar“ UND „revidierte Fassung“ und schränke den Publikationstyp auf „Dissertation“ ein.",
+        "B) Ich starte eine Thesaurus-Suche nach „Dissertation“ und verknüpfe diese anschließend mit dem Begriff FPI-R über UND.",
+        "C) Ich suche nach „Freiburger Persönlichkeits-Inventar“ UND „Dissertation“ ohne weitere Einschränkungen.",
+        "D) Ich suche nach „FPI-R“ und schränke den Publikationstyp auf „Dissertation“ ein."
      )
     ),
     ("pp20_s2_f4",
-     "20) Wie geeignet sind folgende Suchanfragen, um den Bibliotheksstandort der Publikation zu finden?\n\n"
+     "20) Wie geeignet sind folgende Suchanfragen, die Sie in die Suchmaske des Bibliothekskatalogs eingeben, um den Bibliotheksstandort der folgenden Publikation zu finden?\n\n"
      "Mönks, F. J.; van Boxtel, H.; Roelofs, J.; Sanders, M. (1986). The identification of gifted children in secondary education and a description of their situation in Holland. "
-     "In: Heller, K. A.; Feldhusen, J. F. (Hrsg.), Identifying and nurturing the gifted: An international perspective. Toronto: Hans Huber. ISBN 0-920887-11-2 (auch: ISBN 3-456-81523-9).",
+     "In: Heller, K. A.; Feldhusen, J. F. (Hrsg.), Identifying and nurturing the gifted: An international perspective. Toronto: Verlag Hans Huber. ISBN 0-920887-11-2 (auch: ISBN 3-456-81523-9).",
      (
-         "A) ISBN (0-920887-11-2)",
-         "B) Mönks The identification of gifted children in secondary education",
-         "C) Vollständiges Zitat (wie oben)",
-         "D) Heller Identifying and nurturing the gifted"
+        "A) Ich suche direkt mit der ISBN „0-920887-11-2“ im Bibliothekskatalog.",
+        "B) Ich suche mit der Zeichenkette „Mönks The identification of gifted children in secondary education“.",
+        "C) Ich gebe das vollständige Zitat wie oben in die Suchmaske ein.",
+        "D) Ich suche mit der Zeichenkette „Heller Identifying and nurturing the gifted“."
      )
     ),
     ("pp21_s2_f4",
-     "21) Wie geeignet sind folgende Suchanfragen, um den Bibliotheksstandort von Schachter & Singer (1962) zu finden?",
+     "21) Wie geeignet sind folgende Suchanfragen, die Sie in die Suchmaske des Bibliothekskatalogs eingeben, um den Bibliotheksstandort der Publikation Schachter, S., & Singer, J. E. (1962) zu finden?",
      (
-         "A) Psychological Review",
-         "B) Schachter, S., & Singer, J. E. (1962). Cognitive, social, and physiological determinants of emotional state. Psychological Review, 69(5), 379–399.",
-         "C) 0033-295X (ISSN)",
-         "D) Schachter Cognitive social and physiological determinants of emotional state"
+        "A) Ich suche nur nach dem Zeitschriftentitel „Psychological Review“.",
+        "B) Ich suche mit dem vollständigen Zitat: Schachter, S., & Singer, J. E. (1962). Cognitive, social, and physiological determinants of emotional state. Psychological Review, 69(5), 379–399.",
+        "C) Ich suche mit der ISSN „0033-295X“ des Journals.",
+        "D) Ich suche mit einer verkürzten Kombination: „Schachter Cognitive social and physiological determinants of emotional state“."
      )
     ),
     ("pp22_s2_f4",
-     "22) Sie benötigen: „Richard S. Lazarus – Stress, Appraisal, and Coping“. Wie gehen Sie vor?",
+     "22) Sie benötigen das folgende Buch: Lazarus, R. S., & Folkman, S. (1984). Stress, Appraisal, and Coping. New York: Springer Publishing Company. Wie gehen Sie vor?",
      (
-         "A) OPAC: „Lazarus Stress Appraisal Coping“",
-         "B) Fachdatenbank-Suche",
-         "C) ISBN recherchieren und im OPAC eingeben",
-         "D) Internet-Suchmaschine (online verfügbar?)"
+        "A) Ich suche im Bibliothekskatalog nach der Zeichenkette „Lazarus Stress Appraisal Coping“.",
+        "B) Ich suche in einer Fachdatenbank nach „Lazarus Stress Appraisal Coping“, da viele Bücher dort erfasst sind.",
+        "C) Ich recherchiere die ISBN des Buches und gebe diese in den Bibliothekskatalog ein.",
+        "D) Ich suche in einer Internet-Suchmaschine, ob das Buch online verfügbar ist."
      )
     ),
 ]
