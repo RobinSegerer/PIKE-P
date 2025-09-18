@@ -34,6 +34,23 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
+QUESTION_FONT_PX = 24  # gewünschte Größe in px
+
+st.markdown(
+    f"""
+    <style>
+    /* Robuste Overrides für verschiedene Streamlit-Versionen */
+    div[data-testid="stExpander"] > details > summary,
+    div[data-testid="stExpander"] > details > summary * ,
+    div[data-testid="stExpander"] .streamlit-expanderHeader {{
+        font-size: {QUESTION_FONT_PX}px !important;
+        font-weight: 700 !important;
+        line-height: 1.35 !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # ===== Items =====
 items = [
