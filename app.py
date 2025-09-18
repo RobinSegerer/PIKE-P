@@ -33,6 +33,20 @@ with st.sidebar:
         f"<style>html, body, [class*='css']{{font-size:{base_font}px}}</style>",
         unsafe_allow_html=True
     )
+QUESTION_FONT_PX = 22  # z.B. 22px
+st.markdown(
+    f"""
+    <style>
+    /* Expander-Überschriften (Fragen) größer darstellen */
+    div[data-testid="stExpander"] div[role="button"] p {{
+        font-size: {QUESTION_FONT_PX}px !important;
+        font-weight: 600 !important;
+        line-height: 1.35 !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # ===== Items =====
 items = [
