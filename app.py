@@ -34,7 +34,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
-QUESTION_FONT_PX = 24  # gewünschte Größe in px
+QUESTION_FONT_PX = 22  # gewünschte Größe in px
 
 st.markdown(
     f"""
