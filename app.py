@@ -4,7 +4,9 @@ import pandas as pd
 from datetime import datetime
 
 # ===== Einstellungen =====
-ENABLE_CSV_EXPORT = False  # auf True setzen, um CSV-Download zu zeigen
+ENABLE_CSV_EXPORT = False
+ALLOW_PARTIAL = True  # fehlende Antworten zulassen: werden als 3 (= teils/teils) gewertet
+
 
 st.set_page_config(page_title="PIKE-P Selbstlerntest", layout="wide")
 st.title("PIKE-P Selbstlerntest (Informationskompetenzen für Psycholog:innen)")
@@ -374,33 +376,50 @@ def score_item(item_id: str, r: dict[str, int]) -> int:
 
 # ===== Auswertung =====
 if st.button("Auswerten", type="primary"):
-    # Pflichtfeld-Check
-    missing = []
-    for item_id, title, _ in items:
-        ans = responses.get(item_id, {})
-        if any(v is None for v in ans.values()):
-            missing.append(title)
-    if missing:
-        st.warning("Bitte alle Antworten vergeben. Noch offen:\n- " + "\n- ".join(missing))
-        st.stop()
+    # Nur prüfen, wenn Teil-Auswertung NICHT erlaubt ist
+    if not ALLOW_PARTIAL:
+        missing = []
+        for item_id, title, _ in items:
+            ans = responses.get(item_id, {})
+            if any(v is None for v in ans.values()):
+                missing.append(title)
+        if missing:
+            st.warning("Bitte alle Antworten vergeben. Noch offen:\n- " + "\n- ".join(missing))
+            st.stop()
 
     rows = []
     total = 0
+    missing_count = 0
+
     for item_id, title, _ in items:
-        s = score_item(item_id, responses[item_id])  # type: ignore[arg-type]
+        r = responses.get(item_id, {"A": None, "B": None, "C": None, "D": None})
+
+        if ALLOW_PARTIAL:
+            # Fehlende Werte als 3 (teils/teils) imputieren
+            missing_count += sum(v is None for v in r.values())
+            r_scored = {k: (v if v is not None else 3) for k, v in r.items()}
+        else:
+            r_scored = r  # alles muss gesetzt sein (s. Check oben)
+
+        s = score_item(item_id, r_scored)  # nutzt A,B,C,D; None kommt hier nicht mehr vor
         total += s
         rows.append({"Item": title, "Score": s})
 
     df = pd.DataFrame(rows)
-    pcnt = round((total/86)*100, 2)
+    pcnt = round((total / 86) * 100, 2)
 
     st.success(f"Gesamtscore (PIKE): {total} / 86  ·  PIKE_PCNT: {pcnt}%")
+    if ALLOW_PARTIAL and missing_count > 0:
+        st.info(f"Teil-Auswertung aktiv: {missing_count} fehlende Antworten wurden als 3 (= teils/teils) gewertet.")
+
     st.dataframe(df, use_container_width=True)
 
     if ENABLE_CSV_EXPORT:
         now = datetime.now().strftime("%Y%m%d_%H%M%S")
         csv = df.to_csv(index=False).encode("utf-8")
-        st.download_button("Ergebnisse als CSV herunterladen",
-                           data=csv,
-                           file_name=f"pike_result_{now}.csv",
-                           mime="text/csv")
+        st.download_button(
+            "Ergebnisse als CSV herunterladen",
+            data=csv,
+            file_name=f"pike_result_{now}.csv",
+            mime="text/csv"
+        )
