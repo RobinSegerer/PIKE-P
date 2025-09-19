@@ -447,7 +447,7 @@ st.markdown(
     </style>
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
-      <a href="mailto:robin.segerer@unibas.ch">dein.name@uni.tld</a> ·
+      <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
       <a href="https://example.tld" target="_blank">Website</a> ·
       Version v1.0 · 2025-09-19
     </div>
