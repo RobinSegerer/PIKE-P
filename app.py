@@ -52,8 +52,19 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-SCALE_HINT = "1 = völlig ungeeignet · 2 = eher ungeeignet · 3 = teils/teils · 4 = eher geeignet · 5 = sehr gut geeignet"
+st.markdown("""
+<style>
+.pike-scale-hint{
+  font-size: 0.9rem; 
+  opacity: 0.8; 
+  margin-top: 0.15rem; 
+  margin-bottom: 0.35rem;
+}
+</style>
+""", unsafe_allow_html=True)
 
+SCALE_HINT = "1 = völlig ungeeignet · 2 = eher ungeeignet · 3 = teils/teils · 4 = eher geeignet · 5 = sehr gut geeignet"
+SCALE_HINT_HTML = f"<div class='pike-scale-hint'>{SCALE_HINT}</div>"
 # ===== Items =====
 
 items = [
@@ -375,8 +386,7 @@ for item_id, title, choices in items:
                             label_visibility="collapsed",
                             key=f"{item_id}_{label}"
                         )
-                        st.caption(SCALE_HINT)  # ⬅️ Skala klein anzeigen
-                        st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
+                        st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
         else:
             for idx in range(4):
                 label = chr(65+idx)
@@ -389,8 +399,7 @@ for item_id, title, choices in items:
                     label_visibility="collapsed",
                     key=f"{item_id}_{label}"
                 )
-                st.caption(SCALE_HINT)  # ⬅️ Skala klein anzeigen
-                st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
+                st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
 
 # ===== Auswertung =====
 if st.button("Auswerten", type="primary"):
