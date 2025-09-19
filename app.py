@@ -287,34 +287,36 @@ for item_id, title, choices in items:
     with st.expander(title, expanded=(layout_mode == "Untereinander")):
         if layout_mode == "Kompakt (2 Spalten)":
             cols = st.columns(2)
-            for i in range(2):
-                with cols[i]:
-                    for j in range(2):
-                        idx = i*2 + j
-                        label = chr(65+idx)  # A-D
+            for col_i in range(2):
+                with cols[col_i]:
+                    for row_i in range(2):
+                        idx = col_i * 2 + row_i  # 0..3
+                        label = chr(65 + idx)     # A..D
                         st.markdown(f"**{choices[idx]}**")
                         responses.setdefault(item_id, {})[label] = st.radio(
-                            f"{item_id}_{label}",
+                            label=f"{item_id}_{label}",
                             options=[1, 2, 3, 4, 5],
-                            index=None,  # kein Default -> Pflichtfeld möglich
+                            index=None,                 # kein Default -> Pflichtfeld möglich
                             horizontal=True,
                             label_visibility="collapsed",
                             key=f"{item_id}_{label}"
                         )
-                        st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
+                        st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
+                        st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
         else:
             for idx in range(4):
-                label = chr(65+idx)
+                label = chr(65 + idx)  # A..D
                 st.markdown(f"**{choices[idx]}**")
                 responses.setdefault(item_id, {})[label] = st.radio(
-                    f"{item_id}_{label}",
+                    label=f"{item_id}_{label}",
                     options=[1, 2, 3, 4, 5],
                     index=None,
                     horizontal=True,
                     label_visibility="collapsed",
                     key=f"{item_id}_{label}"
                 )
-                st.markdown("<div style='height:0.25rem'></div>", unsafe_allow_html=True)
+                st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
+                st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
 
 st.markdown("---")
 
