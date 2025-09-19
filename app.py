@@ -14,13 +14,20 @@ st.caption("Inoffizielle Selbstlern-Version – bitte Originalquelle (CC BY-SA 4
            "Rosman, Mayer & Krampen (2019), Open Test Archive (ZPID).")
 
 # ===== Instruktionen + Skala =====
-st.markdown("""
+partial_hint = (
+    "Fehlende Antworten sind <b>erlaubt</b>: Unbeantwortete Optionen werden als <b>3 = teils/teils</b> gewertet."
+    if ALLOW_PARTIAL
+    else "Bitte alle Antworten vergeben. Unbeantwortete Items verhindern die Auswertung."
+)
+
+st.markdown(f"""
 <div style='border:1px solid #ddd;border-radius:8px;padding:14px;background:#fafafa'>
   <b>Instruktionen</b>
   <ul>
     <li>Zu jedem Item werden <b>vier Vorgehensweisen (A–D)</b> gezeigt.</li>
     <li>Bewerte <b>jede</b> der vier Vorgehensweisen auf einer Skala von <b>1 bis 5</b> (Wie geeignet?).</li>
     <li>Klicke auf <b>Auswerten</b>, um deinen Gesamtscore zu erhalten.</li>
+    <li><b>Hinweis:</b> {partial_hint}</li>
   </ul>
   <div><b>Antwortskala (1–5):</b> 1 = völlig ungeeignet · 2 = eher ungeeignet · 3 = teils/teils · 4 = eher geeignet · 5 = sehr gut geeignet</div>
 </div>
