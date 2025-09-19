@@ -430,3 +430,27 @@ if st.button("Auswerten", type="primary"):
             file_name=f"pike_result_{now}.csv",
             mime="text/csv"
         )
+
+st.markdown(
+    """
+    <style>
+    .pike-footer{
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        padding: 6px 10px;
+        background: rgba(250,250,250,0.92);
+        border-top: 1px solid #e6e6e6;
+        font-size: 12px; color: #666;
+        text-align: center;
+        z-index: 9999;
+    }
+    </style>
+    <div class="pike-footer">
+      Verantwortlich: Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
+      <a href="mailto:dein.name@uni.tld">dein.name@uni.tld</a> ·
+      <a href="https://example.tld" target="_blank">Website</a> ·
+      Version v1.0 · 2025-09-19
+    </div>
+    """,
+    unsafe_allow_html=True
+)
