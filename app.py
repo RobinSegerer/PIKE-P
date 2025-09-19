@@ -446,8 +446,8 @@ st.markdown(
     }
     </style>
     <div class="pike-footer">
-      Verantwortlich: Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
-      <a href="mailto:dein.name@uni.tld">dein.name@uni.tld</a> ·
+      Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
+      <a href="mailto:robin.segerer@unibas.ch">dein.name@uni.tld</a> ·
       <a href="https://example.tld" target="_blank">Website</a> ·
       Version v1.0 · 2025-09-19
     </div>
