@@ -370,38 +370,7 @@ def score_item(item_id: str, r: dict[str, int]) -> int:
         s += (A>B) + (A>D) + (C>B)
     return int(s)
 
-for item_id, title, choices in items:
-    with st.expander(title, expanded=(layout_mode == "Untereinander")):
-        if layout_mode == "Kompakt (2 Spalten)":
-            cols = st.columns(2)
-            for i in range(2):
-                with cols[i]:
-                    for j in range(2):
-                        idx = i*2 + j
-                        label = chr(65+idx)  # A-D
-                        st.markdown(f"**{choices[idx]}**")
-                        responses.setdefault(item_id, {})[label] = st.radio(
-                            f"{item_id}_{label}",
-                            options=[1, 2, 3, 4, 5],
-                            index=None,
-                            horizontal=True,
-                            label_visibility="collapsed",
-                            key=f"{item_id}_{label}"
-                        )
-                        st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
-        else:
-            for idx in range(4):
-                label = chr(65+idx)
-                st.markdown(f"**{choices[idx]}**")
-                responses.setdefault(item_id, {})[label] = st.radio(
-                    f"{item_id}_{label}",
-                    options=[1, 2, 3, 4, 5],
-                    index=None,
-                    horizontal=True,
-                    label_visibility="collapsed",
-                    key=f"{item_id}_{label}"
-                )
-                st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
+
 
 # ===== Auswertung =====
 if st.button("Auswerten", type="primary"):
