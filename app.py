@@ -19,6 +19,8 @@ st.info(
     "Die publizierten Vergleichswerte sind daher weiterhin als Orientierung nutzbar, aber nicht als neu validierte Normwerte."
 )
 
+st.caption("Neu: Wahlweise Vollversion (22 Situationen) oder didaktische Kurzversion (11 Situationen).")
+
 # ===== Instruktionen + Skala =====
 partial_hint = (
     "Teilbearbeitung ist aktiviert. Ein Normvergleich wird nur angezeigt, wenn alle vier Antworten eines Items vorliegen."
@@ -95,13 +97,7 @@ items = [
      )
     ),
     ("pp02_s1_f1",
-     "2) Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche:\n\n"
-     "1. **Ermitteln von (zusätzlichen) Suchbegriffen** – Zusätzliche Begriffe bestimmen, die die zentralen Konzepte der Fragestellung beschreiben.\n\n"
-     "2. **Lesen der Aufgabenstellung** – Die Aufgabenstellung aufmerksam und vollständig erfassen.\n\n"
-     "3. **Verknüpfen der Suchbegriffe und Eingabe der Suchphrase** – Die Suchbegriffe entsprechend der Fragestellung logisch miteinander verknüpfen und in die Suchmaske eingeben.\n\n"
-     "4. **Kurze, einfache Suchen** – Zunächst einfache Suchen mit einzelnen Konzepten oder Suchbegriffen durchführen.\n\n"
-     "5. **Identifikation wichtiger Konzepte** – Die zentralen Konzepte der Aufgabenstellung bestimmen und festhalten.\n\n"
-     "Bitte geben Sie für jede der folgenden vier Abfolgen an, für wie geeignet Sie diese Reihenfolge halten.",
+     "2) Vorbereitung einer Literatursuche: Welche Reihenfolge ist geeignet?",
      (
         "A) Reihenfolge: 2 – 5 – 4 – 1 – 3",
         "B) Reihenfolge: 2 – 5 – 1 – 4 – 3",
@@ -297,15 +293,83 @@ items = [
     ),
 ]
 
+
+# Zusatztexte, die innerhalb eines Items formatiert angezeigt werden.
+ITEM_INTROS = {
+    "pp02_s1_f1": """
+Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche:
+
+1. **Ermitteln von (zusätzlichen) Suchbegriffen**  
+   Zusätzliche Begriffe bestimmen, die die zentralen Konzepte der Fragestellung beschreiben.
+
+2. **Lesen der Aufgabenstellung**  
+   Die Aufgabenstellung aufmerksam und vollständig erfassen.
+
+3. **Verknüpfen der Suchbegriffe und Eingabe der Suchphrase**  
+   Die Suchbegriffe entsprechend der Fragestellung logisch miteinander verknüpfen und in die Suchmaske eingeben.
+
+4. **Kurze, einfache Suchen**  
+   Zunächst einfache Suchen mit einzelnen Konzepten oder Suchbegriffen durchführen.
+
+5. **Identifikation wichtiger Konzepte**  
+   Die zentralen Konzepte der Aufgabenstellung bestimmen und festhalten.
+
+**Bitte geben Sie für jede der folgenden vier Abfolgen an, für wie geeignet Sie diese Reihenfolge halten.**
+"""
+}
+
+
+# ===== Testmodus wählen =====
+if "test_mode" not in st.session_state:
+    st.session_state.test_mode = None
+
+if st.session_state.test_mode is None:
+    st.markdown("### Welche Version möchten Sie bearbeiten?")
+    st.write(
+        "Die Vollversion enthält alle 22 Situationen. "
+        "Die Kurzversion enthält 11 ausgewählte Situationen und deckt weiterhin alle 10 Kompetenzbereiche ab."
+    )
+    c_full, c_short = st.columns(2)
+    with c_full:
+        if st.button("Vollversion · 22 Situationen", type="primary", use_container_width=True):
+            st.session_state.test_mode = "full"
+            st.session_state.page = 0
+            st.session_state.answers = {}
+            st.session_state.show_results = False
+            st.rerun()
+    with c_short:
+        if st.button("Kurzversion · 11 Situationen", use_container_width=True):
+            st.session_state.test_mode = "short"
+            st.session_state.page = 0
+            st.session_state.answers = {}
+            st.session_state.show_results = False
+            st.rerun()
+
+    st.info(
+        "Die Kurzversion ist eine didaktische Ableitung dieser App und wurde nicht als eigene Testform validiert. "
+        "Der Kompetenzlevel wird deshalb aus dem Kurzscore linear auf die 0–86-Skala der Vollversion interpoliert."
+    )
+    st.stop()
+
+ACTIVE_ITEMS = get_active_items(items)
+ACTIVE_ITEM_IDS = {item[0] for item in ACTIVE_ITEMS}
+
 # ===== Wizard / abschnittsweise Bearbeitung =====
 
-SECTIONS = [
-    ("Recherche vorbereiten", "Grundlagen der Suchstrategie", list(range(0, 5))),
-    ("Suchbegriffe & Evidenz", "Begriffe, Literaturarten und Evidenz auswählen", list(range(5, 10))),
-    ("Suchwerkzeuge", "Geeignete Recherchewerkzeuge auswählen", list(range(10, 13))),
-    ("Datenbanklogik", "Boolesche Logik, Thesaurus und Suchfelder", list(range(13, 19))),
-    ("Zugang & Beschaffung", "Publikationen identifizieren und beschaffen", list(range(19, 22))),
+SECTION_SPECS = [
+    ("Recherche vorbereiten", "Grundlagen der Suchstrategie", {"pp01_s1_f1","pp02_s1_f1","pp03_s1_f2","pp04_s1_f2","pp05_s1_f3"}),
+    ("Suchbegriffe & Evidenz", "Begriffe, Literaturarten und Evidenz auswählen", {"pp06_s1_f3","pp07_s1_f4","pp08_s1_f4","pp09_s1_f5","pp10_s1_f5"}),
+    ("Suchwerkzeuge", "Geeignete Recherchewerkzeuge auswählen", {"pp11_s1_f6","pp12_s1_f6","pp13_s1_f6"}),
+    ("Datenbanklogik", "Boolesche Logik, Thesaurus und Suchfelder", {"pp14_s2_f1","pp15_s2_f1","pp16_s2_f2","pp17_s2_f2","pp18_s2_f3","pp19_s2_f3"}),
+    ("Zugang & Beschaffung", "Publikationen identifizieren und beschaffen", {"pp20_s2_f4","pp21_s2_f4","pp22_s2_f4"}),
 ]
+
+# Pro Abschnitt die Indizes aus ACTIVE_ITEMS bestimmen; leere Abschnitte entfallen.
+SECTIONS = []
+for name, subtitle, ids in SECTION_SPECS:
+    indices = [i for i, item in enumerate(ACTIVE_ITEMS) if item[0] in ids]
+    if indices:
+        SECTIONS.append((name, subtitle, indices))
 
 if "page" not in st.session_state:
     st.session_state.page = 0
@@ -324,7 +388,7 @@ def item_complete(item_id: str) -> bool:
     return all(r.get(label) is not None for label in ("A", "B", "C", "D"))
 
 def section_complete(indices: list[int]) -> bool:
-    return all(item_complete(items[i][0]) for i in indices)
+    return all(item_complete(ACTIVE_ITEMS[i][0]) for i in indices)
 
 def go_prev():
     st.session_state.page = max(0, st.session_state.page - 1)
@@ -338,6 +402,7 @@ def restart_test():
     st.session_state.page = 0
     st.session_state.answers = {}
     st.session_state.show_results = False
+    st.session_state.test_mode = None
     # Sichtbare Radiobutton-Zustände entfernen; persistente Antworten liegen separat.
     for key in list(st.session_state.keys()):
         if key.startswith("widget_"):
@@ -354,20 +419,20 @@ page = st.session_state.page
 section_title, section_subtitle, section_indices = SECTIONS[page]
 
 # Globaler Fortschritt über die 22 Situationen / 88 Einzelurteile
-total_judgments = len(items) * 4
+total_judgments = len(ACTIVE_ITEMS) * 4
 answered_judgments = sum(
     1
     for item_answers in st.session_state.answers.values()
     for label in ("A", "B", "C", "D")
     if item_answers.get(label) is not None
 )
-completed_items = sum(1 for item_id, _, _ in items if item_complete(item_id))
+completed_items = sum(1 for item_id, _, _ in ACTIVE_ITEMS if item_complete(item_id))
 progress_value = answered_judgments / total_judgments if total_judgments else 0.0
 
 st.markdown("---")
 st.progress(progress_value)
 st.caption(
-    f"Fortschritt: **{completed_items} von {len(items)} Situationen** vollständig "
+    f"Fortschritt: **{completed_items} von {len(ACTIVE_ITEMS)} Situationen** vollständig "
     f"· {answered_judgments} von {total_judgments} Bewertungen"
 )
 
@@ -409,8 +474,11 @@ def render_choice(item_id: str, choice_idx: int, choice_text: str):
     st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
 
 for idx in section_indices:
-    item_id, title, choices = items[idx]
+    item_id, title, choices = ACTIVE_ITEMS[idx]
     with st.expander(title, expanded=(layout_mode == "Untereinander")):
+        if item_id in ITEM_INTROS:
+            st.markdown(ITEM_INTROS[item_id])
+
         if layout_mode == "Kompakt (2 Spalten)":
             cols = st.columns(2)
             with cols[0]:
@@ -425,7 +493,7 @@ for idx in section_indices:
 
 # Nach dem Rendern erneut prüfen (wichtig nach Antwortänderungen)
 current_complete = section_complete(section_indices)
-section_done = sum(1 for i in section_indices if item_complete(items[i][0]))
+section_done = sum(1 for i in section_indices if item_complete(ACTIVE_ITEMS[i][0]))
 
 if current_complete and page < len(SECTIONS) - 1:
     st.success(
@@ -552,6 +620,37 @@ SKILL_LABELS = {
     "s2_f3": "Limiter / Suchfelder einsetzen",
     "s2_f4": "Volltexte beschaffen"
 }
+
+# ===== Kurzversion (didaktisch, nicht separat validiert) =====
+# Auswahl: je ein Item aus jedem der 10 Kompetenzbereiche + ein zusätzliches
+# Beschaffungsitem. So bleibt die inhaltliche Breite der Originalfassung möglichst erhalten.
+SHORT_ITEM_IDS = [
+    "pp01_s1_f1",  # Planung
+    "pp03_s1_f2",  # Pearl Growing
+    "pp05_s1_f3",  # Suchbegriffe extrahieren
+    "pp07_s1_f4",  # Suchbegriffe umformulieren
+    "pp09_s1_f5",  # Publikationstypen
+    "pp11_s1_f6",  # Suchwerkzeuge
+    "pp14_s2_f1",  # Boolesche Operatoren
+    "pp16_s2_f2",  # Thesaurus
+    "pp18_s2_f3",  # Limiter / Suchfelder
+    "pp20_s2_f4",  # Beschaffung
+    "pp22_s2_f4",  # Beschaffung (zweites Item)
+]
+
+def get_active_items(all_items):
+    if st.session_state.get("test_mode") == "short":
+        return [item for item in all_items if item[0] in SHORT_ITEM_IDS]
+    return all_items
+
+def short_equivalent_full_score(short_score: int, short_max: int) -> float:
+    """
+    Lineare Interpolation auf die 0–86-Skala der Vollversion.
+    Dies ist nur eine didaktische Näherung, keine empirische Testverkürzung/Equating-Lösung.
+    """
+    if short_max <= 0:
+        return 0.0
+    return (short_score / short_max) * 86.0
 
 def item_skill(item_id: str) -> str:
     # z.B. pp01_s1_f1 -> s1_f1
@@ -741,7 +840,7 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
     responses = st.session_state.answers
     # Für den Norm-/Referenzvergleich sollte der Test vollständig bearbeitet sein.
     missing = []
-    for item_id, title, _ in items:
+    for item_id, title, _ in ACTIVE_ITEMS:
         ans = responses.get(item_id, {})
         if len(ans) < 4 or any(v is None for v in ans.values()):
             missing.append(title)
@@ -754,7 +853,7 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
     total = 0
     answered_items = 0
 
-    for item_id, title, _ in items:
+    for item_id, title, _ in ACTIVE_ITEMS:
         r = responses.get(item_id, {"A": None, "B": None, "C": None, "D": None})
         complete_item = all(v is not None for v in r.values())
 
@@ -785,19 +884,34 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
     df = pd.DataFrame(rows)
 
     # Norm-/Referenzvergleich nur bei vollständiger Bearbeitung
-    complete_test = (answered_items == len(items))
+    complete_test = (answered_items == len(ACTIVE_ITEMS))
 
     if complete_test:
-        pct_max = 100 * total / 86
-        z = (total - STUDENT_M) / STUDENT_SD
-        perc = approx_percentile(z)
-        band, band_expl = classify_score(total)
+        short_mode = (st.session_state.get("test_mode") == "short")
+        active_max = sum(ITEM_MAX[item_id] for item_id, _, _ in ACTIVE_ITEMS)
+
+        if short_mode:
+            estimated_full = short_equivalent_full_score(total, active_max)
+            pct_max = 100 * total / active_max
+            z = (estimated_full - STUDENT_M) / STUDENT_SD
+            perc = approx_percentile(z)
+            band, band_expl = classify_score(round(estimated_full))
+        else:
+            estimated_full = float(total)
+            pct_max = 100 * total / 86
+            z = (total - STUDENT_M) / STUDENT_SD
+            perc = approx_percentile(z)
+            band, band_expl = classify_score(total)
 
         st.subheader("Ergebnis")
 
         c1, c2, c3, c4 = st.columns(4)
-        c1.metric("PIKE-P", f"{total} / 86")
-        c2.metric("Anteil Maximalpunktzahl", f"{pct_max:.1f}%")
+        if short_mode:
+            c1.metric("Kurzscore", f"{total} / {active_max}")
+            c2.metric("Interpolierter Vollscore", f"{estimated_full:.1f} / 86")
+        else:
+            c1.metric("PIKE-P", f"{total} / 86")
+            c2.metric("Anteil Maximalpunktzahl", f"{pct_max:.1f}%")
         c3.metric("Abstand zu Studierenden-M", f"{z:+.2f} SD")
         c4.metric("ca. Perzentil", f"{perc:.0f}")
 
@@ -811,6 +925,17 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
             st.warning(f"**Einordnung: {band}**")
 
         st.write(band_expl)
+
+        if short_mode:
+            st.warning(
+                "Kurzversion: Der Kompetenzlevel wird aus dem Verhältnis von Kurzscore zu Kurz-Maximum "
+                "linear auf die 0–86-Skala interpoliert. Das ist keine empirisch validierte Kurzform und "
+                "kein psychometrisches Equating. Die Einordnung sollte deshalb nur als grobe Lernorientierung verwendet werden."
+            )
+            st.caption(
+                f"Interpolation: {total}/{active_max} = {pct_max:.1f}% der Kurz-Maximalpunktzahl "
+                f"→ geschätzter Vollscore {estimated_full:.1f}/86."
+            )
 
         st.caption(
             "Wichtig: Diese Einordnung ist eine didaktische Orientierung und keine publizierte Normierung. "
@@ -837,7 +962,7 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
     else:
         max_answered = int(df["Maximum"][df["Score"].notna()].sum())
         st.warning(
-            f"Teil-Auswertung: {answered_items} von {len(items)} Items vollständig beantwortet. "
+            f"Teil-Auswertung: {answered_items} von {len(ACTIVE_ITEMS)} Items vollständig beantwortet. "
             f"Erreichte Punkte: {total} / {max_answered}. "
             "Eine Einordnung als Novize/Durchschnitt/expertennah wird erst bei vollständiger Bearbeitung angezeigt."
         )
@@ -871,7 +996,7 @@ if page == len(SECTIONS) - 1 and st.session_state.show_results:
     # Didaktisches Feedback zu zeitkritischen / modernisierten Items
     relevant_feedback = [
         (item_id, title, ITEM_FEEDBACK[item_id])
-        for item_id, title, _ in items
+        for item_id, title, _ in ACTIVE_ITEMS
         if item_id in ITEM_FEEDBACK
     ]
 
@@ -928,7 +1053,7 @@ st.markdown(
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
       <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
-      Version v1.5 · 2026-09-16
+      Version v1.7 · 2026-09-16
     </div>
     """,
     unsafe_allow_html=True
