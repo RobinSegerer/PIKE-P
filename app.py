@@ -13,6 +13,12 @@ st.title("PIKE-P Selbstlerntest (Informationskompetenzen für Psycholog:innen)")
 st.caption("Inoffizielle Selbstlern-Version – bitte Originalquelle (CC BY-SA 4.0) zitieren: "
            "Rosman, Mayer & Krampen (2019), Open Test Archive (ZPID).")
 
+st.info(
+    "Hinweis zur Fassung 2026: Einige Formulierungen wurden behutsam an heutige Rechercheoberflächen angepasst. "
+    "Itemstruktur, Antwortreihenfolge und das originale Pairwise-Scoring bleiben unverändert. "
+    "Die publizierten Vergleichswerte sind daher weiterhin als Orientierung nutzbar, aber nicht als neu validierte Normwerte."
+)
+
 # ===== Instruktionen + Skala =====
 partial_hint = (
     "Teilbearbeitung ist aktiviert. Ein Normvergleich wird nur angezeigt, wenn alle vier Antworten eines Items vorliegen."
@@ -26,7 +32,9 @@ st.markdown(f"""
   <ul>
     <li>Zu jedem Item werden <b>vier Vorgehensweisen (A–D)</b> gezeigt.</li>
     <li>Bewerte <b>jede</b> der vier Vorgehensweisen auf einer Skala von <b>1 bis 5</b> (Wie geeignet?).</li>
-    <li>Klicke auf <b>Auswerten</b>, um deinen Gesamtscore zu erhalten.</li>
+    <li>Der Test ist in <b>fünf kurze Abschnitte</b> gegliedert. Bearbeite jeweils alle vier Bewertungen einer Situation.</li>
+    <li>Am Ende des fünften Abschnitts kannst du deinen Gesamtscore und dein Lernprofil anzeigen.</li>
+    <li>Plane für die vollständige Bearbeitung ungefähr <b>20–25 Minuten</b> ein.</li>
     <li><b>Hinweis:</b> {partial_hint}</li>
   </ul>
   <div><b>Antwortskala (1–5):</b> 1 = völlig ungeeignet · 2 = eher ungeeignet · 3 = teils/teils · 4 = eher geeignet · 5 = sehr gut geeignet</div>
@@ -113,7 +121,7 @@ items = [
      )
     ),
     ("pp04_s1_f2",
-     "4) Sie möchten eine Hausarbeit über den Erwerb von Ängsten schreiben. Der folgende, soeben erschienene Artikel liegt Ihnen vor:\n\n"
+     "4) Sie möchten eine Hausarbeit über den Erwerb von Ängsten schreiben. Für diese Aufgabe versetzen Sie sich in das Erscheinungsjahr 2013: Der folgende Artikel ist gerade erschienen.\n\n"
      "Wegerer, M., Blechert, J., & Wilhelm, F. H. (2013). Emotionales Lernen: Ein naturalistisches experimentelles Paradigma zur Untersuchung von Angsterwerb und Extinktion mittels aversiver Filme. Zeitschrift für Psychiatrie, Psychologie und Psychotherapie, 61(2), 93–103.\n\n"
      "Wie gehen Sie vor, um nach weiterer Literatur zu suchen?",
      (
@@ -180,28 +188,28 @@ items = [
     ("pp11_s1_f6",
      "11) Ihr Dozent hat Ihnen den Artikel „Human agency in social cognitive theory“ von Albert Bandura empfohlen. Wie geeignet sind die folgenden Hilfsmittel, um herauszufinden, in welcher Zeitschrift der Artikel erschienen ist?",
      (
-        "A) Ich verwende die Fachdatenbank PsycINFO.",
-        "B) Ich verwende die Fachdatenbank PSYNDEX.",
-        "C) Ich recherchiere im Bibliothekskatalog.",
-        "D) Ich recherchiere mit Google Scholar."
+        "A) Ich recherchiere in der psychologischen Fachdatenbank PsycINFO.",
+        "B) Ich recherchiere in der psychologischen Fachdatenbank PSYNDEX.",
+        "C) Ich recherchiere im Bibliothekskatalog bzw. in der lokalen Titelsuche.",
+        "D) Ich recherchiere in Google Scholar."
      )
     ),
     ("pp12_s1_f6",
      "12) Sie suchen einen Artikel von Richard S. Lazarus, kennen aber nicht mehr den genauen Titel. Wie geeignet sind die folgenden Hilfsmittel?",
      (
-        "A) Ich nutze die Autorensuche im Datenbank-Infosystem (DBIS).",
-        "B) Ich nutze die Autorensuche in Google Scholar.",
-        "C) Ich nutze die Autorensuche im Bibliothekskatalog.",
-        "D) Ich nutze die Autorensuche in PsycINFO."
+        "A) Ich nutze das Datenbank-Infosystem (DBIS), um eine geeignete Datenbank zu finden, und suche dort nach dem Autor.",
+        "B) Ich suche in Google Scholar gezielt nach dem Autor.",
+        "C) Ich suche im Bibliothekskatalog gezielt nach dem Autor.",
+        "D) Ich suche in PsycINFO gezielt nach dem Autor."
      )
     ),
     ("pp13_s1_f6",
      "13) Sie benötigen mehrere empirische Arbeiten zu Lernstrategien („Learning Strategies“) von Schulkindern im Alter von 6 bis 12 Jahren. Wie geeignet sind die folgenden Hilfsmittel?",
      (
-        "A) Ich suche im Bibliothekskatalog.",
-        "B) Ich recherchiere in der Fachdatenbank PsycINFO.",
+        "A) Ich suche im Bibliothekskatalog (vor allem Titel- und Bestandsnachweise).",
+        "B) Ich recherchiere in der psychologischen Fachdatenbank PsycINFO.",
         "C) Ich recherchiere mit Google Scholar.",
-        "D) Ich recherchiere in der Fachdatenbank PSYNDEX."
+        "D) Ich recherchiere in der psychologischen Fachdatenbank PSYNDEX."
      )
     ),
     ("pp14_s2_f1",
@@ -226,9 +234,9 @@ items = [
      "16) In Ihrer Bachelorarbeit möchten Sie das Thema „Zeitdruck am Arbeitsplatz“ behandeln. Für „Zeitdruck“ existieren verschiedene englische Begriffe. Wie geeignet sind die folgenden Vorgehensweisen?",
      (
         "A) Ich führe drei separate Suchen nach „Work Load“, „Time Pressure“ und „Work Pressure“ aus und verknüpfe die Ergebnisse.",
-        "B) Ich kläre zunächst anhand eines Fachwörterbuchs, welcher der Begriffe am verbreitetsten ist und vermutlich als Schlagwort genutzt wird.",
+        "B) Ich kläre zunächst anhand eines Fachwörterbuchs bzw. einer Terminologiehilfe, welcher Begriff fachlich üblich ist und vermutlich als Schlagwort genutzt wird.",
         "C) Ich führe eine einfache Suche mit einem der drei Begriffe durch und verlasse mich darauf, dass Synonyme automatisch einbezogen werden.",
-        "D) Ich prüfe im Thesaurus der Fachdatenbank, mit welchen Schlagworten die Begriffe verknüpft sind, und nutze diese gezielt."
+        "D) Ich prüfe im Thesaurus bzw. kontrollierten Vokabular der Fachdatenbank, mit welchen Schlagworten die Begriffe verknüpft sind, und nutze diese gezielt."
      )
     ),
     ("pp17_s2_f2",
@@ -236,8 +244,8 @@ items = [
      (
         "A) Ich starte zwei Thesaurus-Suchen nach „cognitive behavior therapy“ und „longitudinal studies“ und verknüpfe die Suchen anschließend mit UND.",
         "B) Ich gebe die freie Suchphrase „cognitive behavior therapy longitudinal“ ein.",
-        "C) Ich suche nach dem Schlagwort „cognitive behavior therapy“ und kombiniere es mit dem Datenbankfeld „Methodology“ = „Longitudinal Empirical Study“ (UND-Verknüpfung).",
-        "D) Ich suche nach dem Schlagwort „longitudinal study“ und kombiniere es mit dem Feld „Classification Codes“ = „Cognitive Therapy“ (UND-Verknüpfung)."
+        "C) Ich suche nach dem Schlagwort „cognitive behavior therapy“ und kombiniere es – sofern die Datenbank dieses Feld anbietet – mit „Methodology“ = „Longitudinal Empirical Study“ (UND-Verknüpfung).",
+        "D) Ich suche nach dem Schlagwort „longitudinal study“ und kombiniere es – sofern verfügbar – mit dem Feld „Classification Codes“ = „Cognitive Therapy“ (UND-Verknüpfung)."
      )
     ),
     ("pp18_s2_f3",
@@ -259,18 +267,18 @@ items = [
      )
     ),
     ("pp20_s2_f4",
-     "20) Wie geeignet sind folgende Suchanfragen, die Sie in die Suchmaske des Bibliothekskatalogs eingeben, um den Bibliotheksstandort der folgenden Publikation zu finden?\n\n"
+     "20) Wie geeignet sind folgende Suchanfragen, die Sie in einen Bibliothekskatalog bzw. ein Discovery-System eingeben, um Bestand oder Zugang zur folgenden Publikation zu finden?\n\n"
      "Mönks, F. J.; van Boxtel, H.; Roelofs, J.; Sanders, M. (1986). The identification of gifted children in secondary education and a description of their situation in Holland. "
      "In: Heller, K. A.; Feldhusen, J. F. (Hrsg.), Identifying and nurturing the gifted: An international perspective. Toronto: Verlag Hans Huber. ISBN 0-920887-11-2 (auch: ISBN 3-456-81523-9).",
      (
-        "A) Ich suche direkt mit der ISBN „0-920887-11-2“ im Bibliothekskatalog.",
+        "A) Ich suche direkt mit der ISBN „0-920887-11-2“ im Bibliothekskatalog bzw. Discovery-System.",
         "B) Ich suche mit der Zeichenkette „Mönks The identification of gifted children in secondary education“.",
         "C) Ich gebe das vollständige Zitat wie oben in die Suchmaske ein.",
         "D) Ich suche mit der Zeichenkette „Heller Identifying and nurturing the gifted“."
      )
     ),
     ("pp21_s2_f4",
-     "21) Wie geeignet sind folgende Suchanfragen, die Sie in die Suchmaske des Bibliothekskatalogs eingeben, um den Bibliotheksstandort der Publikation Schachter, S., & Singer, J. E. (1962) zu finden?",
+     "21) Wie geeignet sind folgende Suchanfragen, die Sie in einen Bibliothekskatalog bzw. ein Discovery-System eingeben, um Bestand oder Zugang zur Publikation Schachter, S., & Singer, J. E. (1962) zu finden?",
      (
         "A) Ich suche nur nach dem Zeitschriftentitel „Psychological Review“.",
         "B) Ich suche mit dem vollständigen Zitat: Schachter, S., & Singer, J. E. (1962). Cognitive, social, and physiological determinants of emotional state. Psychological Review, 69(5), 379–399.",
@@ -281,51 +289,178 @@ items = [
     ("pp22_s2_f4",
      "22) Sie benötigen das folgende Buch: Lazarus, R. S., & Folkman, S. (1984). Stress, Appraisal, and Coping. New York: Springer Publishing Company. Wie gehen Sie vor?",
      (
-        "A) Ich suche im Bibliothekskatalog nach der Zeichenkette „Lazarus Stress Appraisal Coping“.",
+        "A) Ich suche im Bibliothekskatalog bzw. Discovery-System nach „Lazarus Stress Appraisal Coping“.",
         "B) Ich suche in einer Fachdatenbank nach „Lazarus Stress Appraisal Coping“, da viele Bücher dort erfasst sind.",
-        "C) Ich recherchiere die ISBN des Buches und gebe diese in den Bibliothekskatalog ein.",
-        "D) Ich suche in einer Internet-Suchmaschine, ob das Buch online verfügbar ist."
+        "C) Ich recherchiere die ISBN des Buches und gebe diese in den Bibliothekskatalog bzw. das Discovery-System ein.",
+        "D) Ich suche mit einer allgemeinen Websuchmaschine, ob das Buch online verfügbar ist."
      )
     ),
 ]
 
-# ===== Bewertung erfassen (Radio, ohne Default; Pflichtfeld-Check möglich) =====
-responses: dict[str, dict[str, int | None]] = {}
+# ===== Wizard / abschnittsweise Bearbeitung =====
 
-for item_id, title, choices in items:
+SECTIONS = [
+    ("Recherche vorbereiten", "Grundlagen der Suchstrategie", list(range(0, 5))),
+    ("Suchbegriffe & Evidenz", "Begriffe, Literaturarten und Evidenz auswählen", list(range(5, 10))),
+    ("Suchwerkzeuge", "Geeignete Recherchewerkzeuge auswählen", list(range(10, 13))),
+    ("Datenbanklogik", "Boolesche Logik, Thesaurus und Suchfelder", list(range(13, 19))),
+    ("Zugang & Beschaffung", "Publikationen identifizieren und beschaffen", list(range(19, 22))),
+]
+
+if "page" not in st.session_state:
+    st.session_state.page = 0
+if "answers" not in st.session_state:
+    st.session_state.answers = {}
+if "show_results" not in st.session_state:
+    st.session_state.show_results = False
+
+def save_answer(item_id: str, label: str, widget_key: str):
+    """Sichert Antworten unabhängig vom Lebenszyklus des sichtbaren Streamlit-Widgets."""
+    st.session_state.answers.setdefault(item_id, {})[label] = st.session_state.get(widget_key)
+    st.session_state.show_results = False
+
+def item_complete(item_id: str) -> bool:
+    r = st.session_state.answers.get(item_id, {})
+    return all(r.get(label) is not None for label in ("A", "B", "C", "D"))
+
+def section_complete(indices: list[int]) -> bool:
+    return all(item_complete(items[i][0]) for i in indices)
+
+def go_prev():
+    st.session_state.page = max(0, st.session_state.page - 1)
+    st.session_state.show_results = False
+
+def go_next():
+    st.session_state.page = min(len(SECTIONS) - 1, st.session_state.page + 1)
+    st.session_state.show_results = False
+
+def restart_test():
+    st.session_state.page = 0
+    st.session_state.answers = {}
+    st.session_state.show_results = False
+    # Sichtbare Radiobutton-Zustände entfernen; persistente Antworten liegen separat.
+    for key in list(st.session_state.keys()):
+        if key.startswith("widget_"):
+            del st.session_state[key]
+
+# Neustartmöglichkeit in der Sidebar
+with st.sidebar:
+    st.markdown("---")
+    if st.button("Test neu starten", use_container_width=True):
+        restart_test()
+        st.rerun()
+
+page = st.session_state.page
+section_title, section_subtitle, section_indices = SECTIONS[page]
+
+# Globaler Fortschritt über die 22 Situationen / 88 Einzelurteile
+total_judgments = len(items) * 4
+answered_judgments = sum(
+    1
+    for item_answers in st.session_state.answers.values()
+    for label in ("A", "B", "C", "D")
+    if item_answers.get(label) is not None
+)
+completed_items = sum(1 for item_id, _, _ in items if item_complete(item_id))
+progress_value = answered_judgments / total_judgments if total_judgments else 0.0
+
+st.markdown("---")
+st.progress(progress_value)
+st.caption(
+    f"Fortschritt: **{completed_items} von {len(items)} Situationen** vollständig "
+    f"· {answered_judgments} von {total_judgments} Bewertungen"
+)
+
+# Kompakte Abschnittsnavigation
+step_cols = st.columns(len(SECTIONS))
+for i, (name, _, _) in enumerate(SECTIONS):
+    with step_cols[i]:
+        if i < page:
+            st.markdown(f"**✓ {i+1}. {name}**")
+        elif i == page:
+            st.markdown(f"**→ {i+1}. {name}**")
+        else:
+            st.markdown(f"{i+1}. {name}")
+
+st.subheader(f"Abschnitt {page + 1} von {len(SECTIONS)}: {section_title}")
+st.caption(section_subtitle)
+
+# Nur die Items des aktuellen Abschnitts anzeigen
+responses: dict[str, dict[str, int | None]] = st.session_state.answers
+
+def render_choice(item_id: str, choice_idx: int, choice_text: str):
+    label = chr(65 + choice_idx)
+    saved_value = st.session_state.answers.get(item_id, {}).get(label)
+    widget_key = f"widget_{item_id}_{label}"
+    default_index = [1, 2, 3, 4, 5].index(saved_value) if saved_value in [1, 2, 3, 4, 5] else None
+
+    st.markdown(f"**{choice_text}**")
+    st.radio(
+        label=f"{item_id}_{label}",
+        options=[1, 2, 3, 4, 5],
+        index=default_index,
+        horizontal=True,
+        label_visibility="collapsed",
+        key=widget_key,
+        on_change=save_answer,
+        args=(item_id, label, widget_key),
+    )
+    st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
+    st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
+
+for idx in section_indices:
+    item_id, title, choices = items[idx]
     with st.expander(title, expanded=(layout_mode == "Untereinander")):
         if layout_mode == "Kompakt (2 Spalten)":
             cols = st.columns(2)
-            for col_i in range(2):
-                with cols[col_i]:
-                    for row_i in range(2):
-                        idx = col_i * 2 + row_i  # 0..3
-                        label = chr(65 + idx)     # A..D
-                        st.markdown(f"**{choices[idx]}**")
-                        responses.setdefault(item_id, {})[label] = st.radio(
-                            label=f"{item_id}_{label}",
-                            options=[1, 2, 3, 4, 5],
-                            index=None,                 # kein Default -> Pflichtfeld möglich
-                            horizontal=True,
-                            label_visibility="collapsed",
-                            key=f"{item_id}_{label}"
-                        )
-                        st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
-                        st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
+            with cols[0]:
+                render_choice(item_id, 0, choices[0])
+                render_choice(item_id, 1, choices[1])
+            with cols[1]:
+                render_choice(item_id, 2, choices[2])
+                render_choice(item_id, 3, choices[3])
         else:
-            for idx in range(4):
-                label = chr(65 + idx)  # A..D
-                st.markdown(f"**{choices[idx]}**")
-                responses.setdefault(item_id, {})[label] = st.radio(
-                    label=f"{item_id}_{label}",
-                    options=[1, 2, 3, 4, 5],
-                    index=None,
-                    horizontal=True,
-                    label_visibility="collapsed",
-                    key=f"{item_id}_{label}"
-                )
-                st.markdown(SCALE_HINT_HTML, unsafe_allow_html=True)
-                st.markdown("<div style='height:0.35rem'></div>", unsafe_allow_html=True)
+            for choice_idx in range(4):
+                render_choice(item_id, choice_idx, choices[choice_idx])
+
+# Nach dem Rendern erneut prüfen (wichtig nach Antwortänderungen)
+current_complete = section_complete(section_indices)
+section_done = sum(1 for i in section_indices if item_complete(items[i][0]))
+
+if current_complete and page < len(SECTIONS) - 1:
+    st.success(
+        f"Abschnitt abgeschlossen: {len(section_indices)} von {len(section_indices)} Situationen bearbeitet. "
+        "Du kannst mit dem nächsten Abschnitt fortfahren."
+    )
+elif not current_complete:
+    st.caption(
+        f"In diesem Abschnitt sind {section_done} von {len(section_indices)} Situationen vollständig. "
+        "Der Weiter-Button wird aktiv, sobald alle Bewertungen gesetzt sind."
+    )
+else:
+    st.success("Letzter Abschnitt vollständig bearbeitet. Die Auswertung ist jetzt verfügbar.")
+
+# Vor / Weiter
+nav_left, nav_mid, nav_right = st.columns([1, 2, 1])
+
+with nav_left:
+    if page > 0:
+        st.button("← Zurück", on_click=go_prev, use_container_width=True)
+
+with nav_mid:
+    st.caption(
+        "Deine bisherigen Antworten bleiben beim Wechsel zwischen den Abschnitten in dieser Sitzung erhalten."
+    )
+
+with nav_right:
+    if page < len(SECTIONS) - 1:
+        st.button(
+            "Weiter →",
+            on_click=go_next,
+            disabled=not current_complete,
+            type="primary",
+            use_container_width=True,
+        )
 
 st.markdown("---")
 
@@ -455,8 +590,155 @@ def approx_percentile(z: float) -> float:
     from math import erf, sqrt
     return 100 * (0.5 * (1 + erf(z / sqrt(2))))
 
+
+# ===== Didaktisches Item-Feedback (2026) =====
+# Wichtig: Dieses Feedback verändert das originale Scoring NICHT.
+# Es erklärt (1) die Logik des Originalitems und (2) was sich bis 2026 verändert hat.
+ITEM_FEEDBACK = {
+    "pp04_s1_f2": {
+        "status": "Zeitkontext wichtig",
+        "original": (
+            "Im Original war der Artikel gerade erschienen. Deshalb war eine Vorwärts-Zitationssuche "
+            "zu diesem Zeitpunkt naturgemäß noch wenig ergiebig; Rückwärtsrecherche und Schlagwortsuche "
+            "waren unmittelbar nutzbarer."
+        ),
+        "today": (
+            "Heute ist derselbe Artikel deutlich älter. Eine Vorwärts-Zitationssuche wäre inzwischen "
+            "eine sehr sinnvolle Strategie. Für den PIKE-P-Score wird deshalb ausdrücklich der historische "
+            "Kontext des Erscheinungsjahres beibehalten."
+        ),
+    },
+    "pp05_s1_f3": {
+        "status": "Suchsysteme haben sich verändert",
+        "original": (
+            "Das Item bevorzugt eine knappe, begriffsorientierte Suchanfrage gegenüber ganzen Sätzen "
+            "oder zusätzlichen Funktionswörtern. Das entspricht klassischer Datenbanklogik."
+        ),
+        "today": (
+            "In modernen Suchmaschinen, Discovery-Systemen und KI-gestützten Retrievalsystemen können "
+            "auch natürlichsprachliche Anfragen gut funktionieren. Für reproduzierbare Fachdatenbankrecherchen "
+            "bleibt die Zerlegung in zentrale Konzepte aber weiterhin wichtig."
+        ),
+    },
+    "pp09_s1_f5": {
+        "status": "Evidenztyp ≠ automatische Qualität",
+        "original": (
+            "Für den Einstieg in ein neues Themenfeld werden Überblicksarbeiten und Metaanalysen gegenüber "
+            "populärpsychologischen Ratgebern und isolierten Einzelstudien bevorzugt."
+        ),
+        "today": (
+            "Das Grundprinzip bleibt sinnvoll. Dennoch sollte man Publikationstyp und methodische Qualität trennen: "
+            "Nicht jede Metaanalyse oder jedes Review ist automatisch hochwertige Evidenz."
+        ),
+    },
+    "pp10_s1_f5": {
+        "status": "Evidenzhierarchie mit Vorsicht",
+        "original": (
+            "Für die Begründung eines postulierten Zusammenhangs werden Synthesen mehrerer Studien höher gewichtet "
+            "als einzelne Befunde oder fachfremde Statistiken."
+        ),
+        "today": (
+            "Auch 2026 ist Evidenzsynthese zentral. Entscheidend ist jedoch, ob die zugrunde liegende Recherche, "
+            "Studienqualität und Synthesemethode belastbar sind."
+        ),
+    },
+    "pp11_s1_f6": {
+        "status": "Werkzeuglandschaft gealtert",
+        "original": (
+            "Das Item prüft, welches Recherchewerkzeug für bibliografische Angaben zu einem psychologischen "
+            "Zeitschriftenartikel besonders passend ist."
+        ),
+        "today": (
+            "Heute liefern Google Scholar, Discovery-Systeme und Bibliothekskataloge bibliografische Angaben "
+            "oft ebenfalls zuverlässig. Fachdatenbanken bleiben besonders dann wichtig, wenn strukturierte "
+            "Felder, kontrolliertes Vokabular oder reproduzierbare Recherche gefragt sind."
+        ),
+    },
+    "pp12_s1_f6": {
+        "status": "DBIS funktional präzisiert",
+        "original": (
+            "Das Original kontrastiert verschiedene Wege, einen unbekannten Artikel eines bekannten Autors zu finden."
+        ),
+        "today": (
+            "DBIS ist selbst keine bibliografische Autorendatenbank, sondern hilft dabei, geeignete Datenbanken "
+            "zu identifizieren. Die Formulierung wurde deshalb funktional präzisiert, ohne die Antwortpositionen "
+            "oder das Scoring zu verändern."
+        ),
+    },
+    "pp13_s1_f6": {
+        "status": "Google Scholar heute stärker",
+        "original": (
+            "Für eine komplexe fachliche Suche nach mehreren empirischen Arbeiten werden psychologische "
+            "Fachdatenbanken gegenüber dem Bibliothekskatalog und Google Scholar bevorzugt."
+        ),
+        "today": (
+            "Google Scholar ist heute für viele Themen sehr leistungsfähig. Für systematische, dokumentierbare "
+            "und feldspezifisch filterbare Recherchen bieten Fachdatenbanken jedoch weiterhin methodische Vorteile."
+        ),
+    },
+    "pp16_s2_f2": {
+        "status": "Kontrolliertes Vokabular bleibt relevant",
+        "original": (
+            "Das Item prüft, ob Synonyme nicht nur frei ausprobiert, sondern anhand eines Thesaurus bzw. "
+            "kontrollierten Vokabulars systematisch eingeordnet werden."
+        ),
+        "today": (
+            "Dieses Prinzip bleibt aktuell. Moderne Systeme ergänzen automatische Termexpansion und semantische Suche; "
+            "für transparente und reproduzierbare Strategien ist kontrolliertes Vokabular aber weiterhin wertvoll."
+        ),
+    },
+    "pp17_s2_f2": {
+        "status": "Datenbankfelder sind systemspezifisch",
+        "original": (
+            "Das Item prüft die Kombination von kontrollierten Schlagwörtern mit strukturierten Datenbankfeldern, "
+            "um Längsschnittstudien möglichst vollständig zu identifizieren."
+        ),
+        "today": (
+            "Konkrete Feldnamen unterscheiden sich zwischen Plattformen. Entscheidend ist heute das übergeordnete "
+            "Prinzip: kontrolliertes Vokabular und verfügbare methodische Filter gezielt kombinieren."
+        ),
+    },
+    "pp20_s2_f4": {
+        "status": "Beschaffung ist heute oft Zugang statt Standort",
+        "original": (
+            "Das Item prüft, welche bibliografischen Angaben für die Suche nach einer Buchpublikation im Katalog "
+            "besonders geeignet sind."
+        ),
+        "today": (
+            "Heute geht es häufig nicht nur um einen physischen Standort, sondern um Bestand, Lizenz, E-Book-Zugang, "
+            "Fernleihe oder andere Zugangswege. ISBN und prägnante Titeldaten bleiben trotzdem robuste Suchschlüssel."
+        ),
+    },
+    "pp21_s2_f4": {
+        "status": "Discovery-Systeme verändern die Praxis",
+        "original": (
+            "Das Item prüft, wie man einen Zeitschriftenartikel über bibliografische Identifikatoren und prägnante "
+            "Titeldaten in einem Bibliothekssystem auffindet."
+        ),
+        "today": (
+            "Moderne Discovery-Systeme finden einzelne Artikel häufig direkt. ISSN und Zeitschriftentitel sind "
+            "weiterhin nützlich, dienen aber eher der Identifikation des Journals bzw. Zugangswegs."
+        ),
+    },
+    "pp22_s2_f4": {
+        "status": "Websuche ergänzt, ersetzt aber nicht Bibliothekszugang",
+        "original": (
+            "Das Item bevorzugt den gezielten bibliografischen Weg über Katalog/ISBN gegenüber einer allgemeinen Websuche."
+        ),
+        "today": (
+            "Eine Websuche kann heute schnell zu Verlagsseiten, Open-Access-Versionen oder Google Books führen. "
+            "Für verlässliche Bestands- und Zugangsprüfung bleibt der Bibliothekskatalog bzw. das Discovery-System zentral."
+        ),
+    },
+}
+
 # ===== Auswertung =====
-if st.button("Auswerten", type="primary"):
+if page == len(SECTIONS) - 1 and current_complete:
+    if st.button("Auswertung anzeigen", type="primary", use_container_width=True):
+        st.session_state.show_results = True
+
+if page == len(SECTIONS) - 1 and st.session_state.show_results:
+    responses = st.session_state.answers
     # Für den Norm-/Referenzvergleich sollte der Test vollständig bearbeitet sein.
     missing = []
     for item_id, title, _ in items:
@@ -586,6 +868,39 @@ if st.button("Auswerten", type="primary"):
     st.markdown("#### Itemübersicht")
     st.dataframe(df, use_container_width=True, hide_index=True)
 
+    # Didaktisches Feedback zu zeitkritischen / modernisierten Items
+    relevant_feedback = [
+        (item_id, title, ITEM_FEEDBACK[item_id])
+        for item_id, title, _ in items
+        if item_id in ITEM_FEEDBACK
+    ]
+
+    if relevant_feedback:
+        st.markdown("#### Was bedeutet das heute?")
+        st.caption(
+            "Die Hinweise erklären, wo sich Recherchepraxis seit der Entwicklung des PIKE-P verändert hat. "
+            "Sie verändern weder Ihre Antworten noch den originalen Pairwise-Score."
+        )
+
+        for item_id, title, fb in relevant_feedback:
+            item_row = df[df["Item"] == title]
+            item_score = None
+            item_max = ITEM_MAX.get(item_id)
+            if not item_row.empty and pd.notna(item_row.iloc[0]["Score"]):
+                item_score = int(item_row.iloc[0]["Score"])
+
+            score_suffix = (
+                f" · Score: {item_score}/{item_max}"
+                if item_score is not None and item_max is not None
+                else ""
+            )
+
+            with st.expander(f"{title.split(')')[0]}) {fb['status']}{score_suffix}"):
+                st.markdown("**Original-Logik**")
+                st.write(fb["original"])
+                st.markdown("**Einordnung 2026**")
+                st.write(fb["today"])
+
     if ENABLE_CSV_EXPORT:
         now = datetime.now().strftime("%Y%m%d_%H%M%S")
         csv = df.to_csv(index=False).encode("utf-8")
@@ -613,7 +928,7 @@ st.markdown(
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
       <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
-      Version v1.1 · 2026-09-15
+      Version v1.4 · 2026-09-16
     </div>
     """,
     unsafe_allow_html=True
