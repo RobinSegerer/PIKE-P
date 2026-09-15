@@ -5,7 +5,7 @@ from datetime import datetime
 
 # ===== Einstellungen =====
 ENABLE_CSV_EXPORT = False
-ALLOW_PARTIAL = True  # fehlende Antworten zulassen: werden als 3 (= teils/teils) gewertet
+ALLOW_PARTIAL = False  # Normvergleich nur bei vollständiger Bearbeitung; keine implizite Mittelwert-Imputation
 
 
 st.set_page_config(page_title="PIKE-P Selbstlerntest", layout="wide")
@@ -15,9 +15,9 @@ st.caption("Inoffizielle Selbstlern-Version – bitte Originalquelle (CC BY-SA 4
 
 # ===== Instruktionen + Skala =====
 partial_hint = (
-    "Fehlende Antworten sind <b>erlaubt</b>: Unbeantwortete Optionen werden als <b>3 = teils/teils</b> gewertet."
+    "Teilbearbeitung ist aktiviert. Ein Normvergleich wird nur angezeigt, wenn alle vier Antworten eines Items vorliegen."
     if ALLOW_PARTIAL
-    else "Bitte alle Antworten vergeben. Unbeantwortete Items verhindern die Auswertung."
+    else "Bitte alle Antworten vergeben. Für eine faire Auswertung und den Referenzvergleich ist eine vollständige Bearbeitung erforderlich."
 )
 
 st.markdown(f"""
@@ -381,45 +381,210 @@ def score_item(item_id: str, r: dict[str, int]) -> int:
 
 
 
+
+# ===== Referenzwerte und didaktische Einordnung =====
+# Rosman, Mayer & Krampen (Validierungsstudie):
+# Studierende: M = 53.06, SD = 9.82, N = 81
+# Expertenstichprobe: M = 71.42, SD = 7.27, N = 14
+# Diese Werte sind Forschungsstichproben, keine Normstichproben.
+STUDENT_M = 53.06
+STUDENT_SD = 9.82
+EXPERT_M = 71.42
+EXPERT_SD = 7.27
+
+ITEM_MAX = {
+    "pp01_s1_f1": 4, "pp02_s1_f1": 3,
+    "pp03_s1_f2": 3, "pp04_s1_f2": 3,
+    "pp05_s1_f3": 3, "pp06_s1_f3": 3,
+    "pp07_s1_f4": 5, "pp08_s1_f4": 4,
+    "pp09_s1_f5": 5, "pp10_s1_f5": 4,
+    "pp11_s1_f6": 4, "pp12_s1_f6": 4, "pp13_s1_f6": 5,
+    "pp14_s2_f1": 4, "pp15_s2_f1": 5,
+    "pp16_s2_f2": 4, "pp17_s2_f2": 4,
+    "pp18_s2_f3": 3, "pp19_s2_f3": 5,
+    "pp20_s2_f4": 4, "pp21_s2_f4": 4, "pp22_s2_f4": 3
+}
+
+SKILL_LABELS = {
+    "s1_f1": "Planung der Recherche",
+    "s1_f2": "Pearl Growing / Ausgangsartikel nutzen",
+    "s1_f3": "Suchbegriffe extrahieren",
+    "s1_f4": "Suchbegriffe umformulieren/erweitern",
+    "s1_f5": "Publikationstypen auswählen",
+    "s1_f6": "Suchwerkzeuge auswählen",
+    "s2_f1": "Boolesche Operatoren",
+    "s2_f2": "Thesaurus / kontrolliertes Vokabular",
+    "s2_f3": "Limiter / Suchfelder einsetzen",
+    "s2_f4": "Volltexte beschaffen"
+}
+
+def item_skill(item_id: str) -> str:
+    # z.B. pp01_s1_f1 -> s1_f1
+    return "_".join(item_id.split("_")[1:])
+
+def classify_score(total: int) -> tuple[str, str]:
+    """
+    Didaktische, NICHT normativ validierte Einordnung.
+    Grenzen orientieren sich an:
+    - ca. 1 SD unter/über dem Mittelwert der Validierungsstichprobe
+    - Expertenmittelwert als zusätzlichem Anker
+    """
+    if total <= 43:
+        return (
+            "Novizen-naher Bereich",
+            "Der Wert liegt mehr als ungefähr eine Standardabweichung unter dem Mittelwert der Validierungsstichprobe."
+        )
+    elif total <= 62:
+        return (
+            "Typischer Studierendenbereich",
+            "Der Wert liegt ungefähr innerhalb von ±1 Standardabweichung um den Mittelwert der Validierungsstichprobe."
+        )
+    elif total <= 70:
+        return (
+            "Fortgeschrittener Bereich",
+            "Der Wert liegt deutlich über dem Mittelwert der Validierungsstichprobe, aber noch unter dem Mittelwert der Expertenstichprobe."
+        )
+    else:
+        return (
+            "Expertennaher Bereich",
+            "Der Wert liegt ungefähr auf Höhe des Mittelwerts der Expertenstichprobe oder darüber."
+        )
+
+def approx_percentile(z: float) -> float:
+    # Normalverteilungs-Näherung; rein deskriptiv, da keine Normtabellen publiziert wurden.
+    from math import erf, sqrt
+    return 100 * (0.5 * (1 + erf(z / sqrt(2))))
+
 # ===== Auswertung =====
 if st.button("Auswerten", type="primary"):
-    # Nur prüfen, wenn Teil-Auswertung NICHT erlaubt ist
-    if not ALLOW_PARTIAL:
-        missing = []
-        for item_id, title, _ in items:
-            ans = responses.get(item_id, {})
-            if any(v is None for v in ans.values()):
-                missing.append(title)
-        if missing:
-            st.warning("Bitte alle Antworten vergeben. Noch offen:\n- " + "\n- ".join(missing))
-            st.stop()
+    # Für den Norm-/Referenzvergleich sollte der Test vollständig bearbeitet sein.
+    missing = []
+    for item_id, title, _ in items:
+        ans = responses.get(item_id, {})
+        if len(ans) < 4 or any(v is None for v in ans.values()):
+            missing.append(title)
+
+    if missing and not ALLOW_PARTIAL:
+        st.warning("Bitte alle Antworten vergeben. Noch offen:\n- " + "\n- ".join(missing))
+        st.stop()
 
     rows = []
     total = 0
-    missing_count = 0
+    answered_items = 0
 
     for item_id, title, _ in items:
         r = responses.get(item_id, {"A": None, "B": None, "C": None, "D": None})
+        complete_item = all(v is not None for v in r.values())
 
-        if ALLOW_PARTIAL:
-            # Fehlende Werte als 3 (teils/teils) imputieren
-            missing_count += sum(v is None for v in r.values())
-            r_scored = {k: (v if v is not None else 3) for k, v in r.items()}
-        else:
-            r_scored = r  # alles muss gesetzt sein (s. Check oben)
+        if not complete_item:
+            # Bei Teilbearbeitung wird das Item NICHT künstlich mit 3 imputiert,
+            # weil Gleichstände im Pairwise-Scoring Punkte erzeugen können.
+            rows.append({
+                "Item": title,
+                "Score": None,
+                "Maximum": ITEM_MAX[item_id],
+                "Anteil (%)": None,
+                "Kompetenzbereich": SKILL_LABELS[item_skill(item_id)]
+            })
+            continue
 
-        s = score_item(item_id, r_scored)  # nutzt A,B,C,D; None kommt hier nicht mehr vor
+        s = score_item(item_id, r)
+        max_s = ITEM_MAX[item_id]
         total += s
-        rows.append({"Item": title, "Score": s})
+        answered_items += 1
+        rows.append({
+            "Item": title,
+            "Score": s,
+            "Maximum": max_s,
+            "Anteil (%)": round(100 * s / max_s, 1),
+            "Kompetenzbereich": SKILL_LABELS[item_skill(item_id)]
+        })
 
     df = pd.DataFrame(rows)
-    pcnt = round((total / 86) * 100, 2)
 
-    st.success(f"Gesamtscore (PIKE): {total} / 86  ·  PIKE_PCNT: {pcnt}%")
-    if ALLOW_PARTIAL and missing_count > 0:
-        st.info(f"Teil-Auswertung aktiv: {missing_count} fehlende Antworten wurden als 3 (= teils/teils) gewertet.")
+    # Norm-/Referenzvergleich nur bei vollständiger Bearbeitung
+    complete_test = (answered_items == len(items))
 
-    st.dataframe(df, use_container_width=True)
+    if complete_test:
+        pct_max = 100 * total / 86
+        z = (total - STUDENT_M) / STUDENT_SD
+        perc = approx_percentile(z)
+        band, band_expl = classify_score(total)
+
+        st.subheader("Ergebnis")
+
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("PIKE-P", f"{total} / 86")
+        c2.metric("Anteil Maximalpunktzahl", f"{pct_max:.1f}%")
+        c3.metric("Abstand zu Studierenden-M", f"{z:+.2f} SD")
+        c4.metric("ca. Perzentil", f"{perc:.0f}")
+
+        if band == "Expertennaher Bereich":
+            st.success(f"**Einordnung: {band}**")
+        elif band == "Fortgeschrittener Bereich":
+            st.info(f"**Einordnung: {band}**")
+        elif band == "Typischer Studierendenbereich":
+            st.info(f"**Einordnung: {band}**")
+        else:
+            st.warning(f"**Einordnung: {band}**")
+
+        st.write(band_expl)
+
+        st.caption(
+            "Wichtig: Diese Einordnung ist eine didaktische Orientierung und keine publizierte Normierung. "
+            "Die Originalstudie berichtet Forschungsstichproben, aber keine validierten Cut-off-Werte. "
+            "„Expertennah“ bedeutet daher nur: scoreseitig nahe an der Expertenstichprobe – nicht, dass damit "
+            "individuelle Expertise diagnostiziert wird."
+        )
+
+        # Empirische Referenzanker
+        ref_df = pd.DataFrame({
+            "Referenz": [
+                "Studierende – Validierungsstichprobe",
+                "Studierende – Pilotstichprobe",
+                "Studierende nach Informationskompetenz-Training",
+                "Studierende ohne Training (Freshmen/Sophomores)",
+                "Expert:innen"
+            ],
+            "Mittelwert": [53.06, 53.92, 60.81, 46.53, 71.42],
+            "SD": [9.82, 10.41, 7.87, 9.20, 7.27]
+        })
+        st.markdown("#### Referenzwerte aus der PIKE-P-Studie")
+        st.dataframe(ref_df, use_container_width=True, hide_index=True)
+
+    else:
+        max_answered = int(df["Maximum"][df["Score"].notna()].sum())
+        st.warning(
+            f"Teil-Auswertung: {answered_items} von {len(items)} Items vollständig beantwortet. "
+            f"Erreichte Punkte: {total} / {max_answered}. "
+            "Eine Einordnung als Novize/Durchschnitt/expertennah wird erst bei vollständiger Bearbeitung angezeigt."
+        )
+
+    # Lernprofil nach den 10 Inhaltsbereichen
+    skill_rows = []
+    scored_df = df[df["Score"].notna()].copy()
+    if not scored_df.empty:
+        for skill, g in scored_df.groupby("Kompetenzbereich", sort=False):
+            s = int(g["Score"].sum())
+            m = int(g["Maximum"].sum())
+            skill_rows.append({
+                "Kompetenzbereich": skill,
+                "Punkte": s,
+                "Maximum": m,
+                "Anteil (%)": round(100 * s / m, 1)
+            })
+
+    if skill_rows:
+        st.markdown("#### Lernprofil nach Kompetenzbereichen")
+        st.caption(
+            "Dieses Profil dient der Lernrückmeldung. Die 10 Bereiche sind im Originaltest nur mit 2–3 Items vertreten; "
+            "die Publikation weist deshalb keine separat reliabilitätsgeprüften Subskalen aus."
+        )
+        skill_df = pd.DataFrame(skill_rows).sort_values("Anteil (%)", ascending=False)
+        st.dataframe(skill_df, use_container_width=True, hide_index=True)
+
+    st.markdown("#### Itemübersicht")
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
     if ENABLE_CSV_EXPORT:
         now = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -448,7 +613,7 @@ st.markdown(
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
       <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
-      Version v1.0 · 2025-09-19
+      Version v1.1 · 2026-09-15
     </div>
     """,
     unsafe_allow_html=True
