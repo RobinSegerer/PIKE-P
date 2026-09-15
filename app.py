@@ -95,18 +95,18 @@ items = [
      )
     ),
     ("pp02_s1_f1",
-     "2) Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche:\n"
-     "1. Ermitteln von (zusätzlichen) Suchbegriffen …\n"
-     "2. Lesen der Aufgabenstellung …\n"
-     "3. Verknüpfen der Suchbegriffe und Eingabe der Suchphrase in die Suchmaske …\n"
-     "4. Kurze, einfache Suchen …\n"
-     "5. Identifikation wichtiger Konzepte …\n\n"
-     "Bitte geben Sie für jede der folgenden vier Abfolgen der fünf Schritte an, für wie geeignet Sie sie halten.",
+     "2) Die folgenden fünf Punkte beschreiben einzelne Schritte bei der Vorbereitung einer Literatursuche:\n\n"
+     "1. **Ermitteln von (zusätzlichen) Suchbegriffen** – Zusätzliche Begriffe bestimmen, die die zentralen Konzepte der Fragestellung beschreiben.\n\n"
+     "2. **Lesen der Aufgabenstellung** – Die Aufgabenstellung aufmerksam und vollständig erfassen.\n\n"
+     "3. **Verknüpfen der Suchbegriffe und Eingabe der Suchphrase** – Die Suchbegriffe entsprechend der Fragestellung logisch miteinander verknüpfen und in die Suchmaske eingeben.\n\n"
+     "4. **Kurze, einfache Suchen** – Zunächst einfache Suchen mit einzelnen Konzepten oder Suchbegriffen durchführen.\n\n"
+     "5. **Identifikation wichtiger Konzepte** – Die zentralen Konzepte der Aufgabenstellung bestimmen und festhalten.\n\n"
+     "Bitte geben Sie für jede der folgenden vier Abfolgen an, für wie geeignet Sie diese Reihenfolge halten.",
      (
-        "A) Ich gehe vor nach der Reihenfolge: 2 – 5 – 4 – 1 – 3.",
-        "B) Ich gehe vor nach der Reihenfolge: 2 – 5 – 1 – 4 – 3.",
-        "C) Ich gehe vor nach der Reihenfolge: 2 – 1 – 4 – 5 – 3.",
-        "D) Ich gehe vor nach der Reihenfolge: 2 – 1 – 5 – 4 – 3."
+        "A) Reihenfolge: 2 – 5 – 4 – 1 – 3",
+        "B) Reihenfolge: 2 – 5 – 1 – 4 – 3",
+        "C) Reihenfolge: 2 – 1 – 4 – 5 – 3",
+        "D) Reihenfolge: 2 – 1 – 5 – 4 – 3"
      )
     ),
     ("pp03_s1_f2",
@@ -928,7 +928,7 @@ st.markdown(
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
       <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
-      Version v1.4 · 2026-09-16
+      Version v1.5 · 2026-09-16
     </div>
     """,
     unsafe_allow_html=True
