@@ -294,6 +294,28 @@ items = [
 ]
 
 
+# ===== Kurzversion (didaktisch, nicht separat validiert) =====
+# Auswahl: je ein Item aus jedem der 10 Kompetenzbereiche + ein zusätzliches
+# Beschaffungsitem. So bleibt die inhaltliche Breite der Originalfassung möglichst erhalten.
+SHORT_ITEM_IDS = [
+    "pp01_s1_f1",  # Planung
+    "pp03_s1_f2",  # Pearl Growing
+    "pp05_s1_f3",  # Suchbegriffe extrahieren
+    "pp07_s1_f4",  # Suchbegriffe umformulieren
+    "pp09_s1_f5",  # Publikationstypen
+    "pp11_s1_f6",  # Suchwerkzeuge
+    "pp14_s2_f1",  # Boolesche Operatoren
+    "pp16_s2_f2",  # Thesaurus
+    "pp18_s2_f3",  # Limiter / Suchfelder
+    "pp20_s2_f4",  # Beschaffung
+    "pp22_s2_f4",  # Beschaffung (zweites Item)
+]
+
+def get_active_items(all_items):
+    if st.session_state.get("test_mode") == "short":
+        return [item for item in all_items if item[0] in SHORT_ITEM_IDS]
+    return all_items
+
 # Zusatztexte, die innerhalb eines Items formatiert angezeigt werden.
 ITEM_INTROS = {
     "pp02_s1_f1": """
@@ -620,28 +642,6 @@ SKILL_LABELS = {
     "s2_f3": "Limiter / Suchfelder einsetzen",
     "s2_f4": "Volltexte beschaffen"
 }
-
-# ===== Kurzversion (didaktisch, nicht separat validiert) =====
-# Auswahl: je ein Item aus jedem der 10 Kompetenzbereiche + ein zusätzliches
-# Beschaffungsitem. So bleibt die inhaltliche Breite der Originalfassung möglichst erhalten.
-SHORT_ITEM_IDS = [
-    "pp01_s1_f1",  # Planung
-    "pp03_s1_f2",  # Pearl Growing
-    "pp05_s1_f3",  # Suchbegriffe extrahieren
-    "pp07_s1_f4",  # Suchbegriffe umformulieren
-    "pp09_s1_f5",  # Publikationstypen
-    "pp11_s1_f6",  # Suchwerkzeuge
-    "pp14_s2_f1",  # Boolesche Operatoren
-    "pp16_s2_f2",  # Thesaurus
-    "pp18_s2_f3",  # Limiter / Suchfelder
-    "pp20_s2_f4",  # Beschaffung
-    "pp22_s2_f4",  # Beschaffung (zweites Item)
-]
-
-def get_active_items(all_items):
-    if st.session_state.get("test_mode") == "short":
-        return [item for item in all_items if item[0] in SHORT_ITEM_IDS]
-    return all_items
 
 def short_equivalent_full_score(short_score: int, short_max: int) -> float:
     """
@@ -1053,7 +1053,7 @@ st.markdown(
     <div class="pike-footer">
       Dr. Robin Segerer · Universitätsbibliotheken Basel und Zürich·
       <a href="mailto:robin.segerer@unibas.ch">robin.segerer@unibas.ch</a> ·
-      Version v1.7 · 2026-09-16
+      Version v1.7.1 · 2026-09-16
     </div>
     """,
     unsafe_allow_html=True
